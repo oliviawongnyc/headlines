@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
 
-const PossibleAnswer = ({ children }) => {
+const PossibleAnswer = ({ children }: { children: string }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: children,
     data: { title: children },

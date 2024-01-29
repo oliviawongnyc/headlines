@@ -1,4 +1,11 @@
-const headlines = [
+export interface Headline {
+  date: string;
+  headline: string[];
+  correctAnswer: string;
+  answerBank: string[];
+}
+
+const headlines: Headline[] = [
   {
     date: "July 21, 1969",
     headline: ["Man", ""],

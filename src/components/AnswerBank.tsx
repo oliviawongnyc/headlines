@@ -1,11 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import PossibleAnswer from "./PossibleAnswer";
+import { useHeadline } from "../hooks/useHeadline";
 
-const AnswerBank = ({ answerBank }) => {
-  console.log("answerBank -->", answerBank);
+const AnswerBank = () => {
+  const { currentAnswerBank } = useHeadline();
   return (
     <Box border="1px solid gray" m="auto" p="10" w="80vw">
-      {answerBank.map((answer) => {
+      {currentAnswerBank.map((answer) => {
         return <PossibleAnswer key={answer}>{answer}</PossibleAnswer>;
       })}
     </Box>
