@@ -44,13 +44,13 @@ const headlines: Headline[] = [
   },
   {
     date: "May 8, 1980",
-    headline: ["World Health Organization Declares", "", "Eradicated"],
+    headline: ["World", "Health", "Organization", "Declares", "", "Eradicated"],
     correctAnswer: "Smallpox",
     answerBank: ["Polio", "Measles", "Strep Throat", "the Flu", "Smallpox"],
   },
   {
     date: "October 10, 2014",
-    headline: ["Nobel Peace Prize Awarded to", ""],
+    headline: ["Nobel", "Peace", "Prize", "Awarded", "to", ""],
     correctAnswer: "Malala Yousafzai",
     answerBank: [
       "Jimmy Carter",
@@ -86,7 +86,7 @@ const headlines: Headline[] = [
   },
   {
     date: "December 4, 1967",
-    headline: ["First Successful", ""],
+    headline: ["First", "Successful", ""],
     correctAnswer: "Heart Transplant",
     answerBank: [
       "Hip Replacement",
@@ -98,7 +98,7 @@ const headlines: Headline[] = [
   },
   {
     date: "July 31, 1991",
-    headline: ["", "Sign Nuclear Arms Reduction Treaty"],
+    headline: ["", "Sign", "Nuclear", "Arms", "Reduction", "Treaty"],
     correctAnswer: "U.S. and Soviet Union",
     answerBank: [
       "U.S. and Canada",
@@ -110,7 +110,7 @@ const headlines: Headline[] = [
   },
   {
     date: "August 25, 1944",
-    headline: ["Allies Liberate", ""],
+    headline: ["Allies", "Liberate", ""],
     correctAnswer: "Paris",
     answerBank: ["Auckland", "Paris", "Athens", "Luxembourg", "Oslo"],
   },

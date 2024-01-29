@@ -10,6 +10,8 @@ const Game = () => {
     setCurrentAnswerBank,
     setCurrentGuess,
     setCurrentHeadline,
+    score,
+    setScore,
   } = useHeadline();
 
   const fillInBlank = (e: DragEndEvent) => {
@@ -19,6 +21,11 @@ const Game = () => {
     setCurrentAnswerBank((prevBank) =>
       prevBank.filter((possibleAnswer) => possibleAnswer !== guess.title)
     );
+  };
+
+  const resetGame = () => {
+    setCurrentHeadline(0);
+    setScore(0);
   };
   return (
     <>
@@ -37,8 +44,10 @@ const Game = () => {
           h="100vh"
           justifyContent="center"
         >
-          <Heading as="h1">Thanks for playing!</Heading>
-          <Button onClick={() => setCurrentHeadline(0)}>Play again</Button>
+          <Heading as="h1">
+            You answered {score} out of 10 correctly! Thanks for playing!
+          </Heading>
+          <Button onClick={resetGame}>Play again</Button>
         </Flex>
       )}
     </>

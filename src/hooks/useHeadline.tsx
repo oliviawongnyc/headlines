@@ -13,7 +13,10 @@ type HeadlineContextReturn = {
   currentGuess: string;
   setCurrentGuess: React.Dispatch<React.SetStateAction<string>>;
   headline: Headline | undefined;
+  currentHeadline: number;
   setCurrentHeadline: React.Dispatch<React.SetStateAction<number>>;
+  score: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const HeadlineContext = createContext<HeadlineContextReturn | null>(
@@ -23,11 +26,12 @@ export const HeadlineContext = createContext<HeadlineContextReturn | null>(
 export default function HeadlineContextProvider({
   children,
 }: HeadlineContextProviderProps) {
-  const [currentGuess, setCurrentGuess] = useState("");
-  const [currentHeadline, setCurrentHeadline] = useState(0);
+  const [currentGuess, setCurrentGuess] = useState<string>("");
+  const [currentHeadline, setCurrentHeadline] = useState<number>(0);
   const [currentAnswerBank, setCurrentAnswerBank] = useState<
     Headline["answerBank"]
   >([]);
+  const [score, setScore] = useState<number>(0);
 
   useEffect(() => {
     if (!headlines[currentHeadline]) {
@@ -45,7 +49,10 @@ export default function HeadlineContextProvider({
         currentGuess,
         setCurrentGuess,
         headline: headlines[currentHeadline] || undefined,
+        currentHeadline,
         setCurrentHeadline,
+        score,
+        setScore,
       }}
     >
       {children}

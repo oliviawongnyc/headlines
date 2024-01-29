@@ -14,6 +14,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     : undefined;
   return (
     <Box
+      as="button"
       border="1px solid gray"
       w="fit-content"
       m="1"
