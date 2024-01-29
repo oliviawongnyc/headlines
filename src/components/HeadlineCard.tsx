@@ -43,30 +43,25 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
   };
 
   return (
-    <Flex border="1px solid gray" flexDir="column" p="6">
-      <Heading as="h2" fontSize="15px" mr="0">
+    <Flex border="1px solid lightGray" boxShadow="md" flexDir="column" p="6">
+      <Heading as="h3" fontSize="md" mb="5">
         Question {currentHeadline + 1}/10
       </Heading>
-      <Flex
-        align={currentGuess ? "center" : "baseline"}
-        flexWrap="wrap"
-        gap="2"
-      >
+      <Flex align="center" flexWrap="wrap" gap="2">
         {headline.headline.map((part, idx) => {
           if (!part) {
             return (
               <Flex flexDir="column" key={`${part}-${idx}`}>
                 <Box
-                  borderBottom={`1px solid black`}
                   bg={backgroundColor}
-                  h="50px"
-                  w={currentGuess ? "fit-content" : "100px"}
-                  m="1"
+                  borderBottom="1px solid black"
+                  h="40px"
+                  w={currentGuess ? "fit-content" : "150px"}
                   opacity={backgroundOpacity}
-                  p="1"
                   ref={setNodeRef}
                 >
                   <Heading
+                    as="h2"
                     color={
                       isCorrect === true
                         ? "correct"
@@ -74,6 +69,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
                         ? "incorrect"
                         : "black"
                     }
+                    fontSize="3xl"
                   >
                     {currentGuess}
                   </Heading>
@@ -82,17 +78,24 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
             );
           }
           return (
-            <Heading as="h1" key={`${part}-${idx}`} sx={{ textWrap: "nowrap" }}>
-              {part}
-            </Heading>
+            <Box borderBottom="1px solid white" h="40px">
+              <Heading
+                as="h2"
+                key={`${part}-${idx}`}
+                fontSize="3xl"
+                sx={{ textWrap: "nowrap" }}
+              >
+                {part}
+              </Heading>
+            </Box>
           );
         })}
       </Flex>
-      <Heading as="h2" fontSize="15" mt="4">
+      <Heading as="h2" fontSize="md" mt="5">
         {headline.date}
       </Heading>
       {isCorrect === null ? (
-        <Flex gap="2" ml="auto" mt="2">
+        <Flex gap="2" ml="auto" mt="5">
           <Button isDisabled={!currentGuess} onClick={clearGuess}>
             Clear
           </Button>
@@ -107,7 +110,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
               ? "Well done!"
               : `Nice try. The correct answer is ${headline.correctAnswer}.`}
           </Text>
-          <Flex ml="auto" mt="2">
+          <Flex ml="auto" mt="5">
             {currentHeadline < 9 ? (
               <Button onClick={nextHeadlineOrFinish}>Next Headline</Button>
             ) : (

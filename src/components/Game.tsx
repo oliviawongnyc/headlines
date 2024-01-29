@@ -29,24 +29,35 @@ const Game = () => {
   };
   return (
     <>
-      <Flex alignItems="flex-start" flexDir="column" mt="10" mx="6">
-        <Heading>Headlines</Heading>
-        <Text>
-          Drag the correct answer into the blank to complete the headline.
-        </Text>
+      <Flex alignItems="flex-start" flexDir="column" my="10" mx="6">
+        <Heading as="h1" fontSize="4xl">
+          Headlines
+        </Heading>
+        {headline && (
+          <Text>
+            Drag the correct answer into the blank to complete the headline.
+          </Text>
+        )}
       </Flex>
-      <Flex flexDir="column" justifyContent="center" alignItems="center" mx="6">
+      <Flex flexDir="column" alignItems="center" mx="6">
         {headline ? (
           <DndContext onDragEnd={fillInBlank}>
-            <Flex flexDir="column" gap="10" mt="10">
+            <Flex flexDir="column" gap="10">
               <HeadlineCard headline={headline} />
               <AnswerBank />
             </Flex>
           </DndContext>
         ) : (
-          <Flex flexDir="column" gap="5">
-            <Heading as="h1">
-              You answered {score} out of 10 correctly! Thanks for playing!
+          // Game over
+          <Flex
+            border="1px solid lightGray"
+            boxShadow="md"
+            flexDir="column"
+            gap="7"
+            p="6"
+          >
+            <Heading as="h2" fontSize="2xl">
+              You answered {score} out of 10 correctly.
             </Heading>
             <Button onClick={resetGame}>Play again</Button>
           </Flex>
