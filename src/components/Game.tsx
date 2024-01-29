@@ -1,4 +1,4 @@
-import { Button, Flex, Heading } from "@chakra-ui/react";
+import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
 import AnswerBank from "./AnswerBank";
 import HeadlineCard from "./HeadlineCard";
@@ -29,27 +29,29 @@ const Game = () => {
   };
   return (
     <>
-      {headline ? (
-        <DndContext onDragEnd={fillInBlank}>
-          <Flex alignItems="center" flexDir="column" gap="10" mt="20">
-            <HeadlineCard headline={headline} />
-            <AnswerBank />
+      <Flex alignItems="flex-start" flexDir="column" mt="10" mx="6">
+        <Heading>Headlines</Heading>
+        <Text>
+          Drag the correct answer into the blank to complete the headline.
+        </Text>
+      </Flex>
+      <Flex flexDir="column" justifyContent="center" alignItems="center" mx="6">
+        {headline ? (
+          <DndContext onDragEnd={fillInBlank}>
+            <Flex flexDir="column" gap="10" mt="10">
+              <HeadlineCard headline={headline} />
+              <AnswerBank />
+            </Flex>
+          </DndContext>
+        ) : (
+          <Flex flexDir="column" gap="5">
+            <Heading as="h1">
+              You answered {score} out of 10 correctly! Thanks for playing!
+            </Heading>
+            <Button onClick={resetGame}>Play again</Button>
           </Flex>
-        </DndContext>
-      ) : (
-        <Flex
-          alignItems="center"
-          flexDir="column"
-          gap="5"
-          h="100vh"
-          justifyContent="center"
-        >
-          <Heading as="h1">
-            You answered {score} out of 10 correctly! Thanks for playing!
-          </Heading>
-          <Button onClick={resetGame}>Play again</Button>
-        </Flex>
-      )}
+        )}
+      </Flex>
     </>
   );
 };

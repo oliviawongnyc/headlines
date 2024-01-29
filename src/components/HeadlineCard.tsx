@@ -36,14 +36,14 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
     }
   };
 
-  const goToNextHeadline = () => {
+  const nextHeadlineOrFinish = () => {
     clearGuess();
     setIsCorrect(null);
     setCurrentHeadline((prevState) => prevState + 1);
   };
 
   return (
-    <Flex border="1px solid gray" flexDir="column" w="80vw" p="6">
+    <Flex border="1px solid gray" flexDir="column" p="6">
       <Heading as="h2" fontSize="15px" mr="0">
         Question {currentHeadline + 1}/10
       </Heading>
@@ -93,11 +93,11 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       </Heading>
       {isCorrect === null ? (
         <Flex gap="2" ml="auto" mt="2">
-          <Button isDisabled={!currentGuess} onClick={handleSubmit}>
-            Submit
-          </Button>
           <Button isDisabled={!currentGuess} onClick={clearGuess}>
             Clear
+          </Button>
+          <Button isDisabled={!currentGuess} onClick={handleSubmit}>
+            Submit
           </Button>
         </Flex>
       ) : (
@@ -109,9 +109,9 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
           </Text>
           <Flex ml="auto" mt="2">
             {currentHeadline < 9 ? (
-              <Button onClick={goToNextHeadline}>Next Headline</Button>
+              <Button onClick={nextHeadlineOrFinish}>Next Headline</Button>
             ) : (
-              <Button onClick={goToNextHeadline}>Finish</Button>
+              <Button onClick={nextHeadlineOrFinish}>Finish</Button>
             )}
           </Flex>
         </>
