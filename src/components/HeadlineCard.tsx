@@ -70,7 +70,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
                 <Box
                   bg={backgroundColor}
                   borderBottom="1px solid black"
-                  h="40px"
+                  h={currentGuess ? "fit-content" : "40px"}
                   w={currentGuess ? "fit-content" : "150px"}
                   opacity={backgroundOpacity}
                   ref={setNodeRef}
