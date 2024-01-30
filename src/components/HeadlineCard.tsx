@@ -43,15 +43,21 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
   };
 
   return (
-    <Flex border="1px solid lightGray" boxShadow="md" flexDir="column" p="6">
+    <Flex
+      border="1px solid lightGray"
+      boxShadow="md"
+      flexDir="column"
+      p="6"
+      w="100%"
+    >
       <Heading as="h3" fontSize="md" mb="5">
         Question {currentHeadline + 1}/10
       </Heading>
       <Flex align="center" flexWrap="wrap" gap="2">
-        {headline.headline.map((part, idx) => {
+        {headline.headline.map((part) => {
           if (!part) {
             return (
-              <Flex flexDir="column" key={`${part}-${idx}`}>
+              <Flex flexDir="column" key={`${headline.id}-blank`}>
                 <Box
                   bg={backgroundColor}
                   borderBottom="1px solid black"
@@ -78,13 +84,12 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
             );
           }
           return (
-            <Box borderBottom="1px solid white" h="40px">
-              <Heading
-                as="h2"
-                key={`${part}-${idx}`}
-                fontSize="3xl"
-                sx={{ textWrap: "nowrap" }}
-              >
+            <Box
+              borderBottom="1px solid white"
+              h="40px"
+              key={`${headline.id}-${part}`}
+            >
+              <Heading as="h2" fontSize="3xl" sx={{ textWrap: "nowrap" }}>
                 {part}
               </Heading>
             </Box>

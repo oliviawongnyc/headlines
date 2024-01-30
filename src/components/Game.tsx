@@ -35,17 +35,16 @@ const Game = () => {
         </Heading>
         {headline && (
           <Text>
-            Drag the correct answer into the blank to complete the headline.
+            Drag the answer into the blank to complete the famous New York Times
+            headline.
           </Text>
         )}
       </Flex>
-      <Flex flexDir="column" alignItems="center" mx="6">
+      <Flex flexDir="column" alignItems="flex-start" gap="10" mx="6">
         {headline ? (
           <DndContext onDragEnd={fillInBlank}>
-            <Flex flexDir="column" gap="10">
-              <HeadlineCard headline={headline} />
-              <AnswerBank />
-            </Flex>
+            <HeadlineCard headline={headline} />
+            <AnswerBank />
           </DndContext>
         ) : (
           // Game over
