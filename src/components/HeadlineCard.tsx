@@ -100,7 +100,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
         {headline.date}
       </Heading>
       {isCorrect === null ? (
-        <Flex gap="2" ml="auto" mt="5">
+        <Flex gap="2" mt="5">
           <Button isDisabled={!currentGuess} onClick={clearGuess}>
             Clear
           </Button>
@@ -115,12 +115,13 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
               ? "Well done!"
               : `Nice try. The correct answer is ${headline.correctAnswer}.`}
           </Text>
-          <Flex ml="auto" mt="5">
+          <Flex mt="5" alignItems="baseline" justifyContent="space-between">
             {currentHeadline < 9 ? (
               <Button onClick={nextHeadlineOrFinish}>Next Headline</Button>
             ) : (
               <Button onClick={nextHeadlineOrFinish}>Finish</Button>
             )}
+            <Text>Read the full article here →</Text>
           </Flex>
         </>
       )}

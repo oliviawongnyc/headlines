@@ -4,6 +4,7 @@ export interface Headline {
   headline: string[];
   correctAnswer: string;
   answerBank: string[];
+  links: { article: string };
 }
 
 const headlines: Headline[] = [
@@ -19,10 +20,14 @@ const headlines: Headline[] = [
       "Map the Human Genome",
       "Uncover Cosmic Microwave Background Radiation",
     ],
+    links: {
+      article:
+        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0720.html",
+    },
   },
   {
     id: 2,
-    date: "August 9, 1974",
+    date: "August 8, 1974",
     headline: ["", "Resigns"],
     correctAnswer: "Nixon",
     answerBank: [
@@ -32,10 +37,14 @@ const headlines: Headline[] = [
       "Nixon",
       "Elizabeth II",
     ],
+    links: {
+      article:
+        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0808.html",
+    },
   },
   {
     id: 3,
-    date: "April 16, 1912",
+    date: "April 15, 1912",
     headline: ["", "Sinks", "Four", "Hours", "After", "Hitting", "Iceberg"],
     correctAnswer: "Titanic",
     answerBank: [
@@ -45,18 +54,46 @@ const headlines: Headline[] = [
       "The Mary Rose",
       "Endurance",
     ],
+    links: {
+      article:
+        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0415.html",
+    },
   },
   {
     id: 4,
-    date: "May 8, 1980",
-    headline: ["World", "Health", "Organization", "Declares", "", "Eradicated"],
+    date: "September 29, 1975",
+    headline: [
+      "Global",
+      "War",
+      "on",
+      "",
+      "Expected",
+      "to",
+      "be",
+      "Won",
+      "in",
+      "'76",
+    ],
     correctAnswer: "Smallpox",
-    answerBank: ["Polio", "Measles", "Strep Throat", "the Flu", "Smallpox"],
+    answerBank: ["Polio", "Measles", "Climate Change", "Influenza", "Smallpox"],
+    links: {
+      article:
+        "https://www.nytimes.com/1975/09/29/archives/new-jersey-pages-global-war-on-smallpox-expected-to-be-won-in-76.html",
+    },
   },
   {
     id: 5,
-    date: "October 10, 2014",
-    headline: ["Nobel", "Peace", "Prize", "Awarded", "to", ""],
+    date: "December 10, 2014",
+    headline: [
+      "",
+      "and",
+      "Kailash",
+      "Satyarthi",
+      "Collect",
+      "Nobel",
+      "Peace",
+      "Prizes",
+    ],
     correctAnswer: "Malala Yousafzai",
     answerBank: [
       "Jimmy Carter",
@@ -65,11 +102,15 @@ const headlines: Headline[] = [
       "Barack Obama",
       "The National Dialogue Quartet",
     ],
+    links: {
+      article:
+        "https://www.nytimes.com/2014/12/11/world/europe/malala-yousafzai-kailash-satyarthi-nobel-peace-prize.html",
+    },
   },
   {
     id: 6,
     date: "February 11, 1990",
-    headline: ["", "Released"],
+    headline: ["", "to", "Go", "Free", "Today"],
     correctAnswer: "Mandela",
     answerBank: [
       "McCain",
@@ -78,12 +119,16 @@ const headlines: Headline[] = [
       "Mandela",
       "Brittney Griner",
     ],
+    links: {
+      article:
+        "https://www.nytimes.com/1990/02/11/world/south-africa-s-new-era-mandela-go-free-today-de-klerk-proclaims-ending-chapter.html",
+    },
   },
   {
     id: 7,
-    date: "April 24, 1990",
-    headline: ["", "Launched"],
-    correctAnswer: "Hubble Space Telescope",
+    date: "June 28, 1990",
+    headline: ["", "Loses", "Large", "Part", "of", "Optical", "Ability"],
+    correctAnswer: "Hubble Telescope",
     answerBank: [
       "Gaia",
       "Kepler Space Telescope",
@@ -91,6 +136,10 @@ const headlines: Headline[] = [
       "Hubble Space Telescope",
       "XMM-Newton",
     ],
+    links: {
+      article:
+        "https://www.nytimes.com/1990/06/28/us/hubble-telescope-loses-large-part-of-optical-ability.html",
+    },
   },
   {
     id: 8,
@@ -104,6 +153,9 @@ const headlines: Headline[] = [
       "Gastric Bypass Surgery",
       "Aortic Aneurysm Repair",
     ],
+    links: {
+      article: "https://www.documentcloud.org/documents/413652-nyt-19690721",
+    },
   },
   {
     id: 9,
@@ -117,6 +169,9 @@ const headlines: Headline[] = [
       "India and Japan",
       "South Africa and Brazil",
     ],
+    links: {
+      article: "https://www.documentcloud.org/documents/413652-nyt-19690721",
+    },
   },
   {
     id: 10,
@@ -124,6 +179,9 @@ const headlines: Headline[] = [
     headline: ["Allies", "Liberate", ""],
     correctAnswer: "Paris",
     answerBank: ["Auckland", "Paris", "Athens", "Luxembourg", "Oslo"],
+    links: {
+      article: "https://www.documentcloud.org/documents/413652-nyt-19690721",
+    },
   },
 ];
 

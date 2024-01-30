@@ -2,9 +2,17 @@ import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
 import AnswerBank from "./AnswerBank";
 import HeadlineCard from "./HeadlineCard";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragEndEvent,
+  MouseSensor,
+  TouchSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 
 const Game = () => {
+  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
   const {
     headline,
     setCurrentAnswerBank,
@@ -47,7 +55,7 @@ const Game = () => {
         mx="6"
       >
         {headline ? (
-          <DndContext onDragEnd={fillInBlank}>
+          <DndContext onDragEnd={fillInBlank} sensors={sensors}>
             <HeadlineCard headline={headline} />
             <AnswerBank />
           </DndContext>
