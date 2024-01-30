@@ -40,7 +40,12 @@ const Game = () => {
           </Text>
         )}
       </Flex>
-      <Flex flexDir="column" alignItems="flex-start" gap="10" mx="6">
+      <Flex
+        flexDir="column"
+        alignItems={headline ? "flex-start" : "center"}
+        gap="10"
+        mx="6"
+      >
         {headline ? (
           <DndContext onDragEnd={fillInBlank}>
             <HeadlineCard headline={headline} />
@@ -56,7 +61,7 @@ const Game = () => {
             p="6"
           >
             <Heading as="h2" fontSize="2xl">
-              You answered {score} out of 10 correctly.
+              You answered {score} out of 10 correctly. 🎉
             </Heading>
             <Button onClick={resetGame}>Play again</Button>
           </Flex>
