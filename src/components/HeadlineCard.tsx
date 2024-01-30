@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Link, Text } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { useHeadline } from "../hooks/useHeadline";
@@ -50,9 +50,18 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       p="6"
       w="100%"
     >
-      <Heading as="h3" fontSize="md" mb="5">
-        Question {currentHeadline + 1}/10
-      </Heading>
+      <Flex alignItems="center" gap="3" mb="5">
+        <Heading as="h3" fontSize="md">
+          Question {currentHeadline + 1}/10
+        </Heading>
+        {isCorrect !== null && (
+          <Text color={isCorrect ? "correct" : "incorrect"}>
+            {isCorrect
+              ? "Well done!"
+              : `Nice try. The correct answer is ${headline.correctAnswer}.`}
+          </Text>
+        )}
+      </Flex>
       <Flex align="center" flexWrap="wrap" gap="2">
         {headline.headline.map((part) => {
           if (!part) {
@@ -110,18 +119,15 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
         </Flex>
       ) : (
         <>
-          <Text color={isCorrect ? "correct" : "incorrect"} mt="2">
-            {isCorrect
-              ? "Well done!"
-              : `Nice try. The correct answer is ${headline.correctAnswer}.`}
-          </Text>
-          <Flex mt="5" alignItems="baseline" justifyContent="space-between">
+          <Flex mt="5" alignItems="end" justifyContent="space-between">
             {currentHeadline < 9 ? (
               <Button onClick={nextHeadlineOrFinish}>Next Headline</Button>
             ) : (
               <Button onClick={nextHeadlineOrFinish}>Finish</Button>
             )}
-            <Text>Read the full article here →</Text>
+            <Link href={headline.links.article} isExternal>
+              Read the full article here →
+            </Link>
           </Flex>
         </>
       )}
