@@ -27,7 +27,7 @@ const headlines: Headline[] = [
   },
   {
     id: 2,
-    date: "August 8, 1974",
+    date: "August 9, 1974",
     headline: ["", "Resigns"],
     correctAnswer: "Nixon",
     answerBank: [
@@ -131,9 +131,9 @@ const headlines: Headline[] = [
     correctAnswer: "Hubble Telescope",
     answerBank: [
       "Gaia",
-      "Kepler Space Telescope",
-      "James Webb Space Telescope",
-      "Hubble Space Telescope",
+      "Kepler Telescope",
+      "James Webb Telescope",
+      "Hubble Telescope",
       "XMM-Newton",
     ],
     links: {
@@ -159,13 +159,13 @@ const headlines: Headline[] = [
   },
   {
     id: 9,
-    date: "July 31, 1991",
-    headline: ["", "Sign", "Nuclear", "Arms", "Reduction", "Treaty"],
-    correctAnswer: "U.S. and Soviet Union",
+    date: "May 29, 1976",
+    headline: ["", "Sign", "a", "Pact", "That", "Limits", "Atomic", "Tests"],
+    correctAnswer: "U.S. and Soviet",
     answerBank: [
       "U.S. and Canada",
       "Germany and France",
-      "U.S. and Soviet Union",
+      "U.S. and Soviet",
       "India and Japan",
       "South Africa and Brazil",
     ],
@@ -181,6 +181,145 @@ const headlines: Headline[] = [
     answerBank: ["Auckland", "Paris", "Athens", "Luxembourg", "Oslo"],
     links: {
       article: "https://www.documentcloud.org/documents/413652-nyt-19690721",
+    },
+  },
+  {
+    id: 11,
+    date: "March 4, 2013",
+    headline: ["Chasing", "the", "Higgs", ""],
+    correctAnswer: "Boson",
+    answerBank: ["Quark", "Electron", "Boson", "Protein", "Gene"],
+    links: {
+      article:
+        "https://www.nytimes.com/2013/03/05/science/chasing-the-higgs-boson-how-2-teams-of-rivals-at-CERN-searched-for-physics-most-elusive-particle.html",
+    },
+  },
+  {
+    id: 12,
+    date: "January 4, 1959",
+    headline: ["Alaska", "Becomes", "the", "", "State"],
+    correctAnswer: "49th",
+    answerBank: ["49th", "32nd", "40th", "50th", "48th"],
+    links: {
+      article:
+        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0103.html",
+    },
+  },
+  {
+    id: 13,
+    date: "January 7, 1919",
+    headline: ["", "Dies", "Suddently", "at", "Oyster", "Bay", "Home"],
+    correctAnswer: "Theodore Roosevelt",
+    answerBank: [
+      "MLK Jr.",
+      "Abraham Lincoln",
+      "Cornelius Vanderbilt",
+      "Alexander Hamilton",
+      "Theodore Roosevelt",
+    ],
+    links: {
+      article:
+        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0106.html",
+    },
+  },
+  {
+    id: 14,
+    date: "January 10, 2007",
+    headline: [
+      "Apple,",
+      "Hoping",
+      "for",
+      "Another",
+      "iPod,",
+      "Introduces",
+      "Innovative",
+      "",
+    ],
+    correctAnswer: "Cellphone",
+    answerBank: [
+      "Tablet",
+      "Television",
+      "Speaker System",
+      "Cellphone",
+      "A.I. Assistant",
+    ],
+    links: {
+      article:
+        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0106.html",
+    },
+  },
+  {
+    id: 15,
+    date: "January 20, 1937",
+    headline: [
+      "",
+      "Sets",
+      "Record",
+      "of",
+      "7",
+      "1/2",
+      "Hours",
+      "in",
+      "Flight",
+      "From",
+      "Coast",
+    ],
+    correctAnswer: "Hughes, Riding Gale",
+    answerBank: [
+      "Saxon, Riding Bird",
+      "Lorenzo, Riding Feather",
+      "Jackson, Riding Lightning",
+      "Hughes, Riding Gale",
+      "Warton, Riding Seafoam",
+    ],
+    links: {
+      article:
+        "https://www.nytimes.com/1937/01/20/archives/hughes-riding-gale-sets-record-of-712-hours-in-flight-from-coast.html",
+    },
+  },
+  {
+    id: 16,
+    date: "January 24, 1973",
+    headline: ["", "Accord", "Reached;", "Cease-Fire", "Begins", "Saturday"],
+    correctAnswer: "Vietnam",
+    answerBank: ["Mali", "Laos", "Vietnam", "France", "Algeria"],
+    links: {
+      article:
+        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0123.html",
+    },
+  },
+  {
+    id: 17,
+    date: "January 25, 1965",
+    headline: ["", "is", "Dead", "at", "90;", "the", "World", "Mourns", "Him"],
+    correctAnswer: "Churchill",
+    answerBank: [
+      "Otis Redding",
+      "Churchill",
+      "Hemingway",
+      "Kennedy",
+      "Nat King Cole",
+    ],
+    links: {
+      article:
+        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0124.html",
+    },
+  },
+  {
+    id: 18,
+    date: "January 26, 1915",
+    headline: ["", "to", "Pacific", "From", "Atlantic"],
+    correctAnswer: "Phone",
+    answerBank: [
+      "Phone",
+      "Railway",
+      "Telegraph",
+      "Bus Route",
+      "Radio Broadcast",
+    ],
+    links: {
+      article:
+        "https://www.nytimes.com/1915/01/26/archives/phone-to-pacific-from-the-atlantic-perfect-test-of-transcontinental.html",
     },
   },
 ];

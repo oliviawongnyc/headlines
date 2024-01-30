@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { useHeadline } from "../hooks/useHeadline";
 import { Headline } from "../data/headlines";
+import { useAnswerBank } from "../hooks/useAnswerBank";
 
 const HeadlineCard = ({ headline }: { headline: Headline }) => {
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
@@ -11,13 +12,14 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
   });
 
   const {
-    setCurrentAnswerBank,
     currentGuess,
     setCurrentGuess,
-    currentHeadline,
-    setCurrentHeadline,
+    currentHeadlineIdx,
+    setCurrentHeadlineIdx,
     setScore,
   } = useHeadline();
+  const { setCurrentAnswerBank } = useAnswerBank();
+
   const backgroundColor = isOver ? "gray.100" : "";
   const backgroundOpacity = isOver ? "0.5" : "";
 
@@ -39,7 +41,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
   const nextHeadlineOrFinish = () => {
     clearGuess();
     setIsCorrect(null);
-    setCurrentHeadline((prevState) => prevState + 1);
+    setCurrentHeadlineIdx((prevState) => prevState + 1);
   };
 
   return (
@@ -52,7 +54,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
     >
       <Flex alignItems="center" gap="3" mb="5">
         <Heading as="h3" fontSize="md">
-          Question {currentHeadline + 1}/10
+          Question {currentHeadlineIdx + 1}/10
         </Heading>
         {isCorrect !== null && (
           <Text color={isCorrect ? "correct" : "incorrect"}>
@@ -120,7 +122,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       ) : (
         <>
           <Flex mt="5" alignItems="end" justifyContent="space-between">
-            {currentHeadline < 9 ? (
+            {currentHeadlineIdx < 9 ? (
               <Button onClick={nextHeadlineOrFinish}>Next Headline</Button>
             ) : (
               <Button onClick={nextHeadlineOrFinish}>Finish</Button>

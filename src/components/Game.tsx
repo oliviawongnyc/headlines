@@ -10,17 +10,14 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
+import { useAnswerBank } from "../hooks/useAnswerBank";
 
 const Game = () => {
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
-  const {
-    headline,
-    setCurrentAnswerBank,
-    setCurrentGuess,
-    setCurrentHeadline,
-    score,
-    setScore,
-  } = useHeadline();
+  const { headline, setCurrentGuess, setCurrentHeadlineIdx, score, setScore } =
+    useHeadline();
+
+  const { setCurrentAnswerBank } = useAnswerBank();
 
   const fillInBlank = (e: DragEndEvent) => {
     const guess = e.active.data.current;
@@ -32,7 +29,7 @@ const Game = () => {
   };
 
   const resetGame = () => {
-    setCurrentHeadline(0);
+    setCurrentHeadlineIdx(0);
     setScore(0);
   };
   return (
@@ -67,9 +64,10 @@ const Game = () => {
             flexDir="column"
             gap="7"
             p="6"
+            textAlign="center"
           >
             <Heading as="h2" fontSize="2xl">
-              You answered {score} out of 10 correctly. 🎉
+              You answered {score} out of 10 correctly! 🎉
             </Heading>
             <Button onClick={resetGame}>Play again</Button>
           </Flex>
