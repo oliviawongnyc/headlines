@@ -7,15 +7,12 @@ import headlines from "./data/headlines";
 // import { useEffect } from "react";
 
 function App() {
-  const currentGameHeadlines = setCurrentGameHeadlines();
+  const gameHeadlines = setCurrentGameHeadlines();
 
-  // useEffect(() => {
-
-  // }, [])
   return (
     <ChakraProvider theme={theme}>
-      <HeadlineContextProvider currentGameHeadlines={currentGameHeadlines}>
-        <AnswerBankContextProvider currentGameHeadlines={currentGameHeadlines}>
+      <HeadlineContextProvider gameHeadlines={gameHeadlines}>
+        <AnswerBankContextProvider gameHeadlines={gameHeadlines}>
           <Game />
         </AnswerBankContextProvider>
       </HeadlineContextProvider>

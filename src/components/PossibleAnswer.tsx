@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
 import { useHeadline } from "../hooks/useHeadline";
+import { useAnswerBank } from "../hooks/useAnswerBank";
 
 const PossibleAnswer = ({ children }: { children: string }) => {
   const { attributes, listeners, setNodeRef, transform } = useDraggable({
@@ -8,24 +9,35 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     data: { title: children },
   });
 
-  const { setCurrentGuess } = useHeadline();
+  const { setCurrentAnswerBank } = useAnswerBank();
+  const { currentHeadlineIdx, gameHeadlines, setCurrentGuess } = useHeadline();
 
-  const style = transform
-    ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
-    : undefined;
+  const guess = () => {
+    const originalAnswerBank = [
+      ...gameHeadlines[currentHeadlineIdx].answerBank,
+    ];
+    setCurrentGuess(children);
+    setCurrentAnswerBank(
+      originalAnswerBank.filter((possibleAnswer) => possibleAnswer !== children)
+    );
+  };
 
   return (
     <Box
       as="button"
-      border="1px solid gray"
+      border="1px solid lightGray"
+      boxShadow="md"
       w="fit-content"
-      m="1"
-      p="1"
-      onClick={() => setCurrentGuess(children)}
+      p="2"
+      onClick={guess}
       ref={setNodeRef}
-      sx={style}
+      sx={
+        transform
+          ? {
+              transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+            }
+          : undefined
+      }
       {...listeners}
       {...attributes}
     >

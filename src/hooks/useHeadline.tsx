@@ -3,15 +3,18 @@ import { Headline } from "../data/headlines";
 
 type HeadlineContextProviderProps = {
   children: React.ReactNode;
-  currentGameHeadlines: Headline[];
+  gameHeadlines: Headline[];
 };
 
 type HeadlineContextReturn = {
   currentGuess: string;
   setCurrentGuess: React.Dispatch<React.SetStateAction<string>>;
-  headline: Headline | undefined;
   currentHeadlineIdx: number;
   setCurrentHeadlineIdx: React.Dispatch<React.SetStateAction<number>>;
+  headline: Headline | undefined;
+  gameHeadlines: Headline[];
+  isCorrect: boolean | null;
+  setIsCorrect: React.Dispatch<React.SetStateAction<boolean | null>>;
   score: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -22,10 +25,11 @@ export const HeadlineContext = createContext<HeadlineContextReturn | null>(
 
 export default function HeadlineContextProvider({
   children,
-  currentGameHeadlines,
+  gameHeadlines,
 }: HeadlineContextProviderProps) {
   const [currentGuess, setCurrentGuess] = useState<string>("");
   const [currentHeadlineIdx, setCurrentHeadlineIdx] = useState<number>(0);
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState<number>(0);
 
   return (
@@ -33,9 +37,12 @@ export default function HeadlineContextProvider({
       value={{
         currentGuess,
         setCurrentGuess,
-        headline: currentGameHeadlines[currentHeadlineIdx] || undefined,
         currentHeadlineIdx,
         setCurrentHeadlineIdx,
+        headline: gameHeadlines[currentHeadlineIdx] || undefined,
+        gameHeadlines,
+        isCorrect,
+        setIsCorrect,
         score,
         setScore,
       }}

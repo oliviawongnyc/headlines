@@ -14,8 +14,15 @@ import { useAnswerBank } from "../hooks/useAnswerBank";
 
 const Game = () => {
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
-  const { headline, setCurrentGuess, setCurrentHeadlineIdx, score, setScore } =
-    useHeadline();
+  const {
+    headline,
+    setCurrentGuess,
+    currentHeadlineIdx,
+    setCurrentHeadlineIdx,
+    isCorrect,
+    score,
+    setScore,
+  } = useHeadline();
 
   const { setCurrentAnswerBank } = useAnswerBank();
 
@@ -34,6 +41,7 @@ const Game = () => {
   };
   return (
     <>
+      {/* Title and instructions */}
       <Flex alignItems="flex-start" flexDir="column" my="10" mx="6">
         <Heading as="h1" fontSize="4xl">
           Headlines
@@ -44,6 +52,21 @@ const Game = () => {
             headline.
           </Text>
         )}
+      </Flex>
+      <Flex alignItems="center" mb="1" mx="6">
+        <Heading as="h3" fontSize={["xs", "sm"]} mr="3">
+          Question {currentHeadlineIdx + 1}/10
+        </Heading>
+        <Text
+          color={isCorrect ? "correct" : "incorrect"}
+          fontSize={["xs", "sm"]}
+        >
+          {headline && isCorrect !== null
+            ? isCorrect
+              ? "Well done!"
+              : `Nice try. The correct answer is ${headline.correctAnswer}.`
+            : null}
+        </Text>
       </Flex>
       <Flex
         flexDir="column"
