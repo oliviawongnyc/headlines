@@ -53,7 +53,7 @@ const Game = () => {
           </Text>
         )}
       </Flex>
-      <Flex alignItems="center" mb="1" mx="6">
+      <Flex alignItems="center" mb="3" mx="6">
         <Heading as="h3" fontSize={["xs", "sm"]} mr="3">
           Question {currentHeadlineIdx + 1}/10
         </Heading>
@@ -71,7 +71,7 @@ const Game = () => {
       <Flex
         flexDir="column"
         alignItems={headline ? "flex-start" : "center"}
-        gap="10"
+        gap={["5", "7"]}
         mx="6"
       >
         {headline ? (
