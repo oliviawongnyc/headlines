@@ -1,4 +1,4 @@
-import { Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
 import AnswerBank from "./AnswerBank";
 import HeadlineCard from "./HeadlineCard";
@@ -11,19 +11,15 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { useAnswerBank } from "../hooks/useAnswerBank";
+import GameOver from "./GameOver";
+import Header from "./Header";
+import { Headline } from "../data/headlines";
 
 const Game = () => {
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
-  const {
-    headline,
-    setCurrentGuess,
-    currentHeadlineIdx,
-    setCurrentHeadlineIdx,
-    isCorrect,
-    score,
-    setScore,
-  } = useHeadline();
 
+  const { headline, setCurrentGuess, currentHeadlineIdx, isCorrect } =
+    useHeadline();
   const { setCurrentAnswerBank } = useAnswerBank();
 
   const fillInBlank = (e: DragEndEvent) => {
@@ -35,39 +31,13 @@ const Game = () => {
     );
   };
 
-  const resetGame = () => {
-    setCurrentHeadlineIdx(0);
-    setScore(0);
-  };
   return (
     <>
-      {/* Title and instructions */}
-      <Flex alignItems="flex-start" flexDir="column" my="10" mx="6">
-        <Heading as="h1" fontSize="4xl">
-          Headlines 🗞️
-        </Heading>
-        {headline && (
-          <Text>
-            Drag the answer into the blank to complete the famous New York Times
-            headline.
-          </Text>
-        )}
-      </Flex>
+      <Header headline={headline} />
       {headline && (
         <Flex alignItems="center" mb="3" mx="6">
-          <Heading as="h3" fontSize={["xs", "sm"]} mr="3">
-            Question {currentHeadlineIdx + 1}/10
-          </Heading>
-          <Text
-            color={isCorrect ? "correct" : "incorrect"}
-            fontSize={["xs", "sm"]}
-          >
-            {headline && isCorrect !== null
-              ? isCorrect
-                ? "Well done!"
-                : `Nice try. The correct answer is ${headline.correctAnswer}.`
-              : null}
-          </Text>
+          <QuestionCount currentHeadlineIdx={currentHeadlineIdx} />
+          <Feedback headline={headline} isCorrect={isCorrect} />
         </Flex>
       )}
       <Flex
@@ -82,23 +52,40 @@ const Game = () => {
             <AnswerBank />
           </DndContext>
         ) : (
-          // Game over
-          <Flex
-            border="1px solid lightGray"
-            boxShadow="md"
-            flexDir="column"
-            gap="7"
-            p="6"
-            textAlign="center"
-          >
-            <Heading as="h2" fontSize="2xl">
-              You answered {score} out of 10 correctly! 🎉
-            </Heading>
-            <Button onClick={resetGame}>Play again</Button>
-          </Flex>
+          <GameOver />
         )}
       </Flex>
     </>
+  );
+};
+
+const QuestionCount = ({
+  currentHeadlineIdx,
+}: {
+  currentHeadlineIdx: number;
+}) => {
+  return (
+    <Heading as="h3" fontSize={["xs", "sm"]} mr="3">
+      Question {currentHeadlineIdx + 1}/10
+    </Heading>
+  );
+};
+
+const Feedback = ({
+  headline,
+  isCorrect,
+}: {
+  headline?: Headline;
+  isCorrect: boolean | null;
+}) => {
+  return (
+    <Text color={isCorrect ? "correct" : "incorrect"} fontSize={["xs", "sm"]}>
+      {headline && isCorrect !== null
+        ? isCorrect
+          ? "Well done!"
+          : `Nice try. The correct answer is ${headline.correctAnswer}.`
+        : null}
+    </Text>
   );
 };
 

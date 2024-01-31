@@ -1,15 +1,11 @@
-import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
-import { useDroppable } from "@dnd-kit/core";
+import { Button, Flex, Link } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
-import { Headline } from "../data/headlines";
 import { useAnswerBank } from "../hooks/useAnswerBank";
 import { useEffect, useRef } from "react";
+import HeadlineAndDate from "./HeadlineAndDate";
+import { Headline } from "../data/headlines";
 
 const HeadlineCard = ({ headline }: { headline: Headline }) => {
-  const { isOver, setNodeRef } = useDroppable({
-    id: "droppable",
-  });
-
   const submitRef = useRef<HTMLButtonElement | null>(null);
 
   const {
@@ -58,55 +54,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       p="6"
       w="100%"
     >
-      <Flex align="center" flexWrap="wrap" gap="2">
-        {headline.headline.map((part) => {
-          if (!part) {
-            return (
-              <Flex flexDir="column" key={`${headline.id}-blank`}>
-                <Box
-                  bg={isOver ? "gray.100" : undefined}
-                  borderBottom={!currentGuess ? "1px solid black" : undefined}
-                  h={currentGuess ? "fit-content" : "40px"}
-                  w={currentGuess ? "fit-content" : "150px"}
-                  opacity={isOver ? "0.5" : undefined}
-                  ref={setNodeRef}
-                >
-                  <Heading
-                    as="h2"
-                    border={currentGuess ? "1px solid lightGray" : undefined}
-                    boxShadow={currentGuess ? "md" : undefined}
-                    p="2"
-                    color={
-                      isCorrect === true
-                        ? "correct"
-                        : isCorrect === false
-                        ? "incorrect"
-                        : "black"
-                    }
-                    fontSize="3xl"
-                  >
-                    {currentGuess}
-                  </Heading>
-                </Box>
-              </Flex>
-            );
-          }
-          return (
-            <Box
-              borderBottom="1px solid white"
-              h="40px"
-              key={`${headline.id}-${part}`}
-            >
-              <Heading as="h2" fontSize="3xl">
-                {part}
-              </Heading>
-            </Box>
-          );
-        })}
-      </Flex>
-      <Heading as="h2" fontSize="md" mt="2">
-        Published {headline.date}
-      </Heading>
+      <HeadlineAndDate headline={headline} />
       {isCorrect === null ? (
         <Flex gap="2" mt="6">
           <Button isDisabled={!currentGuess} onClick={clearGuess}>
