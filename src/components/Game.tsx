@@ -44,7 +44,7 @@ const Game = () => {
       {/* Title and instructions */}
       <Flex alignItems="flex-start" flexDir="column" my="10" mx="6">
         <Heading as="h1" fontSize="4xl">
-          Headlines
+          Headlines 🗞️
         </Heading>
         {headline && (
           <Text>
