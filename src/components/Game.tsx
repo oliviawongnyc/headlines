@@ -53,21 +53,23 @@ const Game = () => {
           </Text>
         )}
       </Flex>
-      <Flex alignItems="center" mb="3" mx="6">
-        <Heading as="h3" fontSize={["xs", "sm"]} mr="3">
-          Question {currentHeadlineIdx + 1}/10
-        </Heading>
-        <Text
-          color={isCorrect ? "correct" : "incorrect"}
-          fontSize={["xs", "sm"]}
-        >
-          {headline && isCorrect !== null
-            ? isCorrect
-              ? "Well done!"
-              : `Nice try. The correct answer is ${headline.correctAnswer}.`
-            : null}
-        </Text>
-      </Flex>
+      {headline && (
+        <Flex alignItems="center" mb="3" mx="6">
+          <Heading as="h3" fontSize={["xs", "sm"]} mr="3">
+            Question {currentHeadlineIdx + 1}/10
+          </Heading>
+          <Text
+            color={isCorrect ? "correct" : "incorrect"}
+            fontSize={["xs", "sm"]}
+          >
+            {headline && isCorrect !== null
+              ? isCorrect
+                ? "Well done!"
+                : `Nice try. The correct answer is ${headline.correctAnswer}.`
+              : null}
+          </Text>
+        </Flex>
+      )}
       <Flex
         flexDir="column"
         alignItems={headline ? "flex-start" : "center"}

@@ -3,11 +3,14 @@ import { useDroppable } from "@dnd-kit/core";
 import { useHeadline } from "../hooks/useHeadline";
 import { Headline } from "../data/headlines";
 import { useAnswerBank } from "../hooks/useAnswerBank";
+import { useEffect, useRef } from "react";
 
 const HeadlineCard = ({ headline }: { headline: Headline }) => {
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",
   });
+
+  const submitRef = useRef<HTMLButtonElement | null>(null);
 
   const {
     currentGuess,
@@ -19,6 +22,12 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
     setScore,
   } = useHeadline();
   const { setCurrentAnswerBank } = useAnswerBank();
+
+  useEffect(() => {
+    if (currentGuess && submitRef.current) {
+      submitRef.current.focus();
+    }
+  }, [currentGuess]);
 
   const clearGuess = () => {
     setCurrentGuess("");
@@ -88,7 +97,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
               h="40px"
               key={`${headline.id}-${part}`}
             >
-              <Heading as="h2" fontSize="3xl" sx={{ textWrap: "nowrap" }}>
+              <Heading as="h2" fontSize="3xl">
                 {part}
               </Heading>
             </Box>
@@ -103,19 +112,21 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
           <Button isDisabled={!currentGuess} onClick={clearGuess}>
             Clear
           </Button>
-          <Button isDisabled={!currentGuess} onClick={handleSubmit}>
+          <Button
+            isDisabled={!currentGuess}
+            onClick={handleSubmit}
+            ref={submitRef}
+          >
             Submit
           </Button>
         </Flex>
       ) : (
         <Flex mt="6" alignItems="end" justifyContent="space-between">
-          {currentHeadlineIdx < 9 ? (
-            <Flex alignItems="center" gap="4">
-              <Button onClick={nextHeadlineOrFinish}>Next Headline</Button>
-            </Flex>
-          ) : (
-            <Button onClick={nextHeadlineOrFinish}>Finish</Button>
-          )}
+          <Flex alignItems="center" gap="4">
+            <Button onClick={nextHeadlineOrFinish}>
+              {currentHeadlineIdx < 9 ? "Next Headline" : "Finish"}
+            </Button>
+          </Flex>
           <Link
             href={headline.links.article}
             isExternal

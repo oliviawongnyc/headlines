@@ -31,13 +31,11 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       p="2"
       onClick={guess}
       ref={setNodeRef}
-      sx={
-        transform
-          ? {
-              transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-            }
-          : undefined
-      }
+      sx={{
+        transform: transform
+          ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
+          : undefined,
+      }}
       {...listeners}
       {...attributes}
     >
