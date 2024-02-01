@@ -5,7 +5,7 @@ import { useAnswerBank } from "../hooks/useAnswerBank";
 const AnswerBank = () => {
   const { currentAnswerBank } = useAnswerBank();
   return (
-    <Box border="1px solid lightGray" boxShadow="md" p="6" w="100%">
+    <Box border="1px solid lightGray" boxShadow="md" p={["4", "6"]} w="100%">
       <Flex flexWrap="wrap" gap="2">
         {currentAnswerBank.map((answer) => {
           return <PossibleAnswer key={answer}>{answer}</PossibleAnswer>;

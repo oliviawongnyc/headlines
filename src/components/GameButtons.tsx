@@ -59,6 +59,7 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
             isDisabled={!currentGuess}
             onClick={clearGuess}
             variant="outline"
+            size={["sm", "md"]}
           >
             Clear
           </Button>
@@ -67,21 +68,21 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
             onClick={handleSubmit}
             ref={submitRef}
             variant="outline"
+            size={["sm", "md"]}
           >
             Submit
           </Button>
         </Flex>
       ) : (
         <Flex mt="6" alignItems="end" justifyContent="space-between">
-          <Flex alignItems="center" gap="4">
-            <Button
-              onClick={nextHeadlineOrFinish}
-              ref={nextRef}
-              variant="outline"
-            >
-              {currentHeadlineIdx < 9 ? "Next Headline" : "Finish"}
-            </Button>
-          </Flex>
+          <Button
+            onClick={nextHeadlineOrFinish}
+            ref={nextRef}
+            variant="outline"
+            size={["sm", "md"]}
+          >
+            {currentHeadlineIdx < 9 ? "Next Headline" : "Finish"}
+          </Button>
           <Link
             borderRadius="var(--chakra-radii-md)"
             fontSize={["sm", "md"]}

@@ -17,10 +17,10 @@ const Header = ({ headline }: { headline?: Headline }) => {
   );
   const colorModeString = useColorModeValue("dark mode", "light mode");
   return (
-    <Flex flexDir="column" my="10" mx="6">
+    <Flex flexDir="column" my="10" mx={["4", "6"]}>
       <Flex alignItems="center" justifyContent="space-between">
         <Heading as="h1" fontSize="4xl">
-          Headlines 🗞️
+          NYT Headlines 🗞️
         </Heading>
         <Tooltip
           hasArrow

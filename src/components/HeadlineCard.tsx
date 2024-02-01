@@ -9,7 +9,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       border="1px solid lightGray"
       boxShadow="md"
       flexDir="column"
-      p="6"
+      p={["4", "6"]}
       w="100%"
     >
       <HeadlineAndDate headline={headline} />

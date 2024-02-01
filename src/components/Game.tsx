@@ -36,7 +36,7 @@ const Game = () => {
     <>
       <Header headline={headline} />
       {headline && (
-        <Flex alignItems="center" mb="3" mx="6" gap="2">
+        <Flex alignItems="end" mb="3" mx={["4", "6"]} gap="2">
           <QuestionCount currentHeadlineIdx={currentHeadlineIdx} />
           <Feedback headline={headline} isCorrect={isCorrect} />
         </Flex>
@@ -45,7 +45,7 @@ const Game = () => {
         alignItems={headline ? "flex-start" : "center"}
         flexDir="column"
         gap={["5", "7"]}
-        mx="6"
+        mx={["4", "6"]}
       >
         {headline ? (
           <DndContext onDragEnd={fillInBlank} sensors={sensors}>
