@@ -322,6 +322,60 @@ const headlines: Headline[] = [
         "https://www.nytimes.com/1915/01/26/archives/phone-to-pacific-from-the-atlantic-perfect-test-of-transcontinental.html",
     },
   },
+  {
+    id: 19,
+    date: "April 28, 1947",
+    headline: [
+      "58,339",
+      "Acclaim",
+      "",
+      "in",
+      "Rare",
+      "Tribute",
+      "at",
+      "Stadium",
+    ],
+    correctAnswer: "Babe Ruth",
+    answerBank: [
+      "Lionel Messi",
+      "Wayne Gretzky",
+      "Muhammed Ali",
+      "Babe Ruth",
+      "Michael Jordan",
+    ],
+    links: {
+      article:
+        "https://www.nytimes.com/1947/04/28/archives/58339-acclaim-babe-ruth-in-rare-tribute-at-stadium-baseballs-most.html",
+    },
+  },
+  {
+    id: 20,
+    date: "May 24, 1934",
+    headline: [
+      "Barrow",
+      "and",
+      "Woman",
+      "are",
+      "Slain",
+      "by",
+      "Police",
+      "in",
+      "",
+      "Trap",
+    ],
+    correctAnswer: "Louisiana",
+    answerBank: [
+      "Texas",
+      "Louisiana",
+      "California",
+      "Vancouver",
+      "Connecticut",
+    ],
+    links: {
+      article:
+        "https://www.nytimes.com/1934/05/24/archives/barrow-and-woman-are-slain-by-police-in-louisiana-trap-bandit-pair.html",
+    },
+  },
 ];
 
 export default headlines;
