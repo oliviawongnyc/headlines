@@ -42,8 +42,8 @@ const Game = () => {
         </Flex>
       )}
       <Flex
-        flexDir="column"
         alignItems={headline ? "flex-start" : "center"}
+        flexDir="column"
         gap={["5", "7"]}
         mx="6"
       >

@@ -35,6 +35,8 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       as="button"
       border="1px solid lightGray"
       boxShadow="md"
+      // We don't want users to be able to focus/click another guess
+      // after the previous guess has been submitted
       disabled={isCorrect !== null ? true : undefined}
       opacity={isCorrect === null ? "" : "0.4"}
       w="fit-content"
@@ -42,8 +44,8 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       onClick={guess}
       ref={setNodeRef}
       sx={{
-        // We don't want users to be able to make another guess
-        // after the guess has been submitted
+        // We don't want users to be able to drag another guess
+        // after the previous guess has been submitted
         transform:
           transform && isCorrect === null
             ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
