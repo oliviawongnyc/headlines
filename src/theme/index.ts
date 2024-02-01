@@ -12,8 +12,8 @@ const theme = extendTheme({
     incorrect: "#d0021b",
   },
   fonts: {
-    heading: `'News Cycle', sans-serif`,
-    body: `'News Cycle', sans-serif`,
+    heading: `'News Cycle', Verdana, sans-serif`,
+    body: `'News Cycle', Verdana, sans-serif`,
   },
   config,
 });
