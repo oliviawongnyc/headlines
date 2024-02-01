@@ -10,6 +10,13 @@ const GameOver = () => {
     setCurrentHeadlineIdx(0);
     setScore(0);
   };
+
+  const scoreIcon = () => {
+    if (score === 10) return "🥳";
+    else if (score > 8) return "🥂";
+    else if (score >= 5) return "😊";
+    else return "🫣";
+  };
   return (
     <Flex
       border="1px solid lightGray"
@@ -20,7 +27,7 @@ const GameOver = () => {
       textAlign="center"
     >
       <Heading as="h2" fontSize="2xl">
-        You answered {score} out of 10 correctly! 🎉
+        You answered {score} out of 10 correctly! {scoreIcon()}
       </Heading>
       <Button onClick={resetGame}>Play again</Button>
     </Flex>

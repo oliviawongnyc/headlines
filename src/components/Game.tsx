@@ -36,7 +36,7 @@ const Game = () => {
     <>
       <Header headline={headline} />
       {headline && (
-        <Flex alignItems="center" mb="3" mx="6">
+        <Flex alignItems="center" mb="3" mx="6" gap="2">
           <QuestionCount currentHeadlineIdx={currentHeadlineIdx} />
           <Feedback headline={headline} isCorrect={isCorrect} />
         </Flex>
@@ -66,8 +66,8 @@ const QuestionCount = ({
   currentHeadlineIdx: number;
 }) => {
   return (
-    <Heading as="h3" fontSize={["xs", "sm"]} mr="3">
-      Question {currentHeadlineIdx + 1}/10
+    <Heading as="h3" fontSize={["sm", "md"]}>
+      {currentHeadlineIdx + 1}/10
     </Heading>
   );
 };
@@ -80,7 +80,7 @@ const Feedback = ({
   isCorrect: boolean | null;
 }) => {
   return (
-    <Text color={isCorrect ? "correct" : "incorrect"} fontSize={["xs", "sm"]}>
+    <Text color={isCorrect ? "correct" : "incorrect"} fontSize={["sm", "md"]}>
       {headline && isCorrect !== null
         ? isCorrect
           ? "Well done!"
