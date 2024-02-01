@@ -2,15 +2,21 @@ import { Box } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
 import { useHeadline } from "../hooks/useHeadline";
 import { useAnswerBank } from "../hooks/useAnswerBank";
+import { useEffect } from "react";
 
 const PossibleAnswer = ({ children }: { children: string }) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({
-    id: children,
-    data: { title: children },
-  });
+  const { attributes, isDragging, listeners, setNodeRef, transform } =
+    useDraggable({
+      id: children,
+      data: { title: children },
+    });
 
-  const { setCurrentAnswerBank } = useAnswerBank();
+  const { setCurrentAnswerBank, setIsDragging } = useAnswerBank();
   const { currentHeadlineIdx, gameHeadlines, setCurrentGuess } = useHeadline();
+
+  useEffect(() => {
+    setIsDragging(isDragging);
+  }, [isDragging, setIsDragging]);
 
   const guess = () => {
     const originalAnswerBank = [

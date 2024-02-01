@@ -57,13 +57,18 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       <HeadlineAndDate headline={headline} />
       {isCorrect === null ? (
         <Flex gap="2" mt="6">
-          <Button isDisabled={!currentGuess} onClick={clearGuess}>
+          <Button
+            isDisabled={!currentGuess}
+            onClick={clearGuess}
+            variant="outline"
+          >
             Clear
           </Button>
           <Button
             isDisabled={!currentGuess}
             onClick={handleSubmit}
             ref={submitRef}
+            variant="outline"
           >
             Submit
           </Button>
@@ -71,7 +76,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       ) : (
         <Flex mt="6" alignItems="end" justifyContent="space-between">
           <Flex alignItems="center" gap="4">
-            <Button onClick={nextHeadlineOrFinish}>
+            <Button onClick={nextHeadlineOrFinish} variant="outline">
               {currentHeadlineIdx < 9 ? "Next Headline" : "Finish"}
             </Button>
           </Flex>

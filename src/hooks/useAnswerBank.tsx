@@ -12,6 +12,8 @@ type AnswerBankContextReturn = {
   setCurrentAnswerBank: React.Dispatch<
     React.SetStateAction<Headline["answerBank"]>
   >;
+  isDragging: boolean;
+  setIsDragging: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const AnswerBankContext = createContext<AnswerBankContextReturn | null>(
@@ -25,6 +27,7 @@ export default function AnswerBankContextProvider({
   const [currentAnswerBank, setCurrentAnswerBank] = useState<
     Headline["answerBank"]
   >([]);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
   const { currentHeadlineIdx } = useHeadline();
 
   useEffect(() => {
@@ -40,6 +43,8 @@ export default function AnswerBankContextProvider({
       value={{
         currentAnswerBank,
         setCurrentAnswerBank,
+        isDragging,
+        setIsDragging,
       }}
     >
       {children}
