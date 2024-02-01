@@ -1,4 +1,4 @@
-import { Flex, Heading, Text } from "@chakra-ui/react";
+import { Flex, Heading, Text, useBreakpointValue } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
 import AnswerBank from "./AnswerBank";
 import HeadlineCard from "./HeadlineCard";
@@ -79,12 +79,17 @@ const Feedback = ({
   headline?: Headline;
   isCorrect: boolean | null;
 }) => {
+  const wrongAnswer = useBreakpointValue({
+    base: `The correct answer is ${headline?.correctAnswer}.`,
+    sm: `Nice try. The correct answer is ${headline?.correctAnswer}.`,
+  });
+
   return (
     <Text color={isCorrect ? "correct" : "incorrect"} fontSize={["sm", "md"]}>
       {headline && isCorrect !== null
         ? isCorrect
           ? "Well done!"
-          : `Nice try. The correct answer is ${headline.correctAnswer}.`
+          : wrongAnswer
         : null}
     </Text>
   );

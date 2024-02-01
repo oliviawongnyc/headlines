@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Button, Flex, Link } from "@chakra-ui/react";
+import { Button, Flex, Link, useBreakpointValue } from "@chakra-ui/react";
 import { useScore } from "../hooks/useScore";
 import { Headline } from "../data/headlines";
 import { useAnswerBank } from "../hooks/useAnswerBank";
@@ -9,6 +9,10 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
   const submitRef = useRef<HTMLButtonElement | null>(null);
   const nextRef = useRef<HTMLButtonElement | null>(null);
 
+  const linkText = useBreakpointValue({
+    base: "Full article here →",
+    sm: "Read the full article here →",
+  });
   const { setCurrentAnswerBank } = useAnswerBank();
   const {
     currentGuess,
@@ -90,7 +94,7 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
             href={headline.links.article}
             isExternal
           >
-            Read the full article here →
+            {linkText}
           </Link>
         </Flex>
       )}
