@@ -11,8 +11,8 @@ import { Headline } from "../data/headlines";
 const Header = ({ headline }: { headline?: Headline }) => {
   const { toggleColorMode } = useColorMode();
   const colorModeIcon = useColorModeValue(
-    <SunIcon as="button" onClick={toggleColorMode} />,
-    <MoonIcon as="button" onClick={toggleColorMode} />
+    <MoonIcon as="button" onClick={toggleColorMode} />,
+    <SunIcon as="button" onClick={toggleColorMode} />
   );
   return (
     <Flex flexDir="column" my="10" mx="6">
