@@ -1,4 +1,5 @@
 import {
+  Button,
   Flex,
   Heading,
   Text,
@@ -12,8 +13,8 @@ import { Headline } from "../data/headlines";
 const Header = ({ headline }: { headline?: Headline }) => {
   const { toggleColorMode } = useColorMode();
   const colorModeIcon = useColorModeValue(
-    <MoonIcon as="button" boxSize="4" onClick={toggleColorMode} />,
-    <SunIcon as="button" boxSize="4" onClick={toggleColorMode} />
+    <MoonIcon boxSize="4" />,
+    <SunIcon boxSize="4" />
   );
   const colorModeString = useColorModeValue("dark mode", "light mode");
   return (
@@ -27,7 +28,7 @@ const Header = ({ headline }: { headline?: Headline }) => {
           label={`Switch to ${colorModeString}`}
           placement="auto"
         >
-          {colorModeIcon}
+          <Button onClick={toggleColorMode}>{colorModeIcon}</Button>
         </Tooltip>
       </Flex>
       {headline && (

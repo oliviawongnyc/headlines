@@ -16,6 +16,8 @@ export const ScoreContext = createContext<ScoreContextReturn | null>(null);
 export default function ScoreContextProvider({
   children,
 }: ScoreContextProviderProps) {
+  // isCorrect is null if a guess has not yet been submitted,
+  // otherwise is true or false.
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [score, setScore] = useState<number>(0);
 
