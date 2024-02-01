@@ -36,7 +36,7 @@ const Game = () => {
     <>
       <Header headline={headline} />
       {headline && (
-        <Flex alignItems="end" mb="3" mx={["4", "6"]} gap="2">
+        <Flex alignItems={["end", "center"]} mb="3" mx={["4", "6"]} gap="2">
           <QuestionCount currentHeadlineIdx={currentHeadlineIdx} />
           <Feedback headline={headline} isCorrect={isCorrect} />
         </Flex>
