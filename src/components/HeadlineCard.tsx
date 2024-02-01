@@ -4,9 +4,11 @@ import { useAnswerBank } from "../hooks/useAnswerBank";
 import { useEffect, useRef } from "react";
 import HeadlineAndDate from "./HeadlineAndDate";
 import { Headline } from "../data/headlines";
+import { useScore } from "../hooks/useScore";
 
 const HeadlineCard = ({ headline }: { headline: Headline }) => {
   const submitRef = useRef<HTMLButtonElement | null>(null);
+  const nextRef = useRef<HTMLButtonElement | null>(null);
 
   const {
     currentGuess,
@@ -15,15 +17,22 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
     setCurrentHeadlineIdx,
     isCorrect,
     setIsCorrect,
-    setScore,
   } = useHeadline();
   const { setCurrentAnswerBank } = useAnswerBank();
+  const { setScore } = useScore();
 
   useEffect(() => {
     if (currentGuess && submitRef.current) {
       submitRef.current.focus();
     }
   }, [currentGuess]);
+
+  // Once a guess has been submitted, focus on "next" button
+  useEffect(() => {
+    if (isCorrect !== null && nextRef.current) {
+      nextRef.current.focus();
+    }
+  }, [isCorrect]);
 
   const clearGuess = () => {
     setCurrentGuess("");
@@ -76,7 +85,11 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       ) : (
         <Flex mt="6" alignItems="end" justifyContent="space-between">
           <Flex alignItems="center" gap="4">
-            <Button onClick={nextHeadlineOrFinish} variant="outline">
+            <Button
+              onClick={nextHeadlineOrFinish}
+              ref={nextRef}
+              variant="outline"
+            >
               {currentHeadlineIdx < 9 ? "Next Headline" : "Finish"}
             </Button>
           </Flex>

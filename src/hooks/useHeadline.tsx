@@ -15,8 +15,6 @@ type HeadlineContextReturn = {
   gameHeadlines: Headline[];
   isCorrect: boolean | null;
   setIsCorrect: React.Dispatch<React.SetStateAction<boolean | null>>;
-  score: number;
-  setScore: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const HeadlineContext = createContext<HeadlineContextReturn | null>(
@@ -30,7 +28,6 @@ export default function HeadlineContextProvider({
   const [currentGuess, setCurrentGuess] = useState<string>("");
   const [currentHeadlineIdx, setCurrentHeadlineIdx] = useState<number>(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
-  const [score, setScore] = useState<number>(0);
 
   return (
     <HeadlineContext.Provider
@@ -43,8 +40,6 @@ export default function HeadlineContextProvider({
         gameHeadlines,
         isCorrect,
         setIsCorrect,
-        score,
-        setScore,
       }}
     >
       {children}

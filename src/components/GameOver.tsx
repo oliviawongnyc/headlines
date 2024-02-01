@@ -1,8 +1,10 @@
 import { Button, Flex, Heading } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
+import { useScore } from "../hooks/useScore";
 
 const GameOver = () => {
-  const { setCurrentHeadlineIdx, score, setScore } = useHeadline();
+  const { setCurrentHeadlineIdx } = useHeadline();
+  const { score, setScore } = useScore();
 
   const resetGame = () => {
     setCurrentHeadlineIdx(0);

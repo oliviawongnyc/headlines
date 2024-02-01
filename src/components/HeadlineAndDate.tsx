@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Tooltip } from "@chakra-ui/react";
+import { Box, Flex, Heading, Tooltip, useDisclosure } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
 import { useDroppable } from "@dnd-kit/core";
 import { Headline } from "../data/headlines";
@@ -8,6 +8,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",
   });
+  const { isOpen, onOpen, onToggle, onClose } = useDisclosure();
   const { currentGuess, isCorrect } = useHeadline();
   const { isDragging } = useAnswerBank();
 
@@ -26,6 +27,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                   label={
                     !isDragging ? "Drag and drop an answer from below" : ""
                   }
+                  isOpen={isOpen}
                   placement="top"
                 >
                   <Box
@@ -34,6 +36,9 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                     h={currentGuess ? "fit-content" : "35px"}
                     w={currentGuess ? "fit-content" : "150px"}
                     opacity={isOver ? "0.5" : undefined}
+                    onMouseEnter={onOpen}
+                    onMouseLeave={onClose}
+                    onClick={onToggle}
                     ref={setNodeRef}
                   >
                     <Heading

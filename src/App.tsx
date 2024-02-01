@@ -4,7 +4,7 @@ import HeadlineContextProvider from "./hooks/useHeadline";
 import Game from "./components/Game";
 import AnswerBankContextProvider from "./hooks/useAnswerBank";
 import headlines from "./data/headlines";
-// import { useEffect } from "react";
+import ScoreContextProvider from "./hooks/useScore";
 
 function App() {
   const gameHeadlines = setCurrentGameHeadlines();
@@ -13,7 +13,9 @@ function App() {
     <ChakraProvider theme={theme}>
       <HeadlineContextProvider gameHeadlines={gameHeadlines}>
         <AnswerBankContextProvider gameHeadlines={gameHeadlines}>
-          <Game />
+          <ScoreContextProvider>
+            <Game />
+          </ScoreContextProvider>
         </AnswerBankContextProvider>
       </HeadlineContextProvider>
     </ChakraProvider>
