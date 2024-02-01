@@ -30,7 +30,12 @@ const Header = ({ headline }: { headline?: Headline }) => {
           label={`Switch to ${colorModeString}`}
           placement="auto"
         >
-          <Button onClick={toggleColorMode}>{colorModeIcon}</Button>
+          <Button
+            aria-label={`Switch to ${colorModeString}`}
+            onClick={toggleColorMode}
+          >
+            {colorModeIcon}
+          </Button>
         </Tooltip>
       </Flex>
       {headline && (
