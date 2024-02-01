@@ -1,4 +1,11 @@
-import { Box, Flex, Heading, Tooltip, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  Heading,
+  Tooltip,
+  useColorModeValue,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
 import { useDroppable } from "@dnd-kit/core";
 import { Headline } from "../data/headlines";
@@ -14,6 +21,15 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
   const { currentGuess } = useHeadline();
   const { isCorrect } = useScore();
 
+  // Light and dark mode colors
+  const tooltipBg = useColorModeValue("white", "gray.800");
+  const textColor = useColorModeValue("black", "white");
+  const blankBorder = useColorModeValue("1px solid black", "1px solid white");
+  const borderReverse = useColorModeValue(
+    "1px solid white",
+    "1px solid gray.800"
+  );
+  const boxBg = useColorModeValue("gray.100", "whiteAlpha.200");
   return (
     <>
       <Flex align="center" flexWrap="wrap" gap="2">
@@ -22,8 +38,8 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
             return (
               <Flex flexDir="column" key={`${headline.id}-blank`}>
                 <Tooltip
-                  bg="white"
-                  color="black"
+                  bg={tooltipBg}
+                  color={textColor}
                   closeOnClick={false}
                   hasArrow
                   label={
@@ -33,9 +49,9 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                   placement="top"
                 >
                   <Box
-                    bg={isOver ? "gray.100" : undefined}
-                    borderBottom={!currentGuess ? "1px solid black" : undefined}
-                    h={currentGuess ? "fit-content" : "35px"}
+                    bg={isOver ? boxBg : undefined}
+                    borderBottom={!currentGuess ? blankBorder : undefined}
+                    h={currentGuess ? "fit-content" : "40px"}
                     w={currentGuess ? "fit-content" : "150px"}
                     opacity={isOver ? "0.5" : undefined}
                     onMouseEnter={onOpen}
@@ -53,7 +69,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                           ? "correct"
                           : isCorrect === false
                           ? "incorrect"
-                          : "black"
+                          : textColor
                       }
                       fontSize="3xl"
                     >
@@ -66,7 +82,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
           }
           return (
             <Box
-              borderBottom="1px solid white"
+              borderBottom={borderReverse}
               h="40px"
               key={`${headline.id}-${part}`}
             >
