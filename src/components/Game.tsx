@@ -1,4 +1,4 @@
-import { Flex, Heading, Text, useBreakpointValue } from "@chakra-ui/react";
+import { Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
 import AnswerBank from "./AnswerBank";
 import HeadlineCard from "./HeadlineCard";
@@ -65,11 +65,7 @@ const QuestionCount = ({
 }: {
   currentHeadlineIdx: number;
 }) => {
-  return (
-    <Heading as="h3" fontSize={["sm", "md"]}>
-      {currentHeadlineIdx + 1}/10
-    </Heading>
-  );
+  return <Text fontSize={["sm", "md"]}>{currentHeadlineIdx + 1}/10</Text>;
 };
 
 const Feedback = ({

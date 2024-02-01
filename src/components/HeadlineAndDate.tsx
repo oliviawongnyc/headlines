@@ -94,7 +94,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
         })}
       </Flex>
       {headline && (
-        <Heading as="h2" fontSize="md" mt="2">
+        <Heading as="h3" fontSize="md" mt="2">
           Published {headline.date}
         </Heading>
       )}
