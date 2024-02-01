@@ -3,14 +3,16 @@ import { useHeadline } from "../hooks/useHeadline";
 import { useDroppable } from "@dnd-kit/core";
 import { Headline } from "../data/headlines";
 import { useAnswerBank } from "../hooks/useAnswerBank";
+import { useScore } from "../hooks/useScore";
 
 const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
   const { isOver, setNodeRef } = useDroppable({
     id: "droppable",
   });
   const { isOpen, onOpen, onToggle, onClose } = useDisclosure();
-  const { currentGuess, isCorrect } = useHeadline();
   const { isDragging } = useAnswerBank();
+  const { currentGuess } = useHeadline();
+  const { isCorrect } = useScore();
 
   return (
     <>

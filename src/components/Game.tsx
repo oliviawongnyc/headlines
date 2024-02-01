@@ -14,13 +14,14 @@ import { useAnswerBank } from "../hooks/useAnswerBank";
 import GameOver from "./GameOver";
 import Header from "./Header";
 import { Headline } from "../data/headlines";
+import { useScore } from "../hooks/useScore";
 
 const Game = () => {
   const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
 
-  const { headline, setCurrentGuess, currentHeadlineIdx, isCorrect } =
-    useHeadline();
+  const { headline, setCurrentGuess, currentHeadlineIdx } = useHeadline();
   const { setCurrentAnswerBank } = useAnswerBank();
+  const { isCorrect } = useScore();
 
   const fillInBlank = (e: DragEndEvent) => {
     const guess = e.active.data.current;

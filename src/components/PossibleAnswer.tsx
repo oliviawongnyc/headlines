@@ -3,6 +3,7 @@ import { useDraggable } from "@dnd-kit/core";
 import { useHeadline } from "../hooks/useHeadline";
 import { useAnswerBank } from "../hooks/useAnswerBank";
 import { useEffect } from "react";
+import { useScore } from "../hooks/useScore";
 
 const PossibleAnswer = ({ children }: { children: string }) => {
   const { attributes, isDragging, listeners, setNodeRef, transform } =
@@ -13,6 +14,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
 
   const { setCurrentAnswerBank, setIsDragging } = useAnswerBank();
   const { currentHeadlineIdx, gameHeadlines, setCurrentGuess } = useHeadline();
+  const { isCorrect } = useScore();
 
   useEffect(() => {
     setIsDragging(isDragging);
@@ -33,14 +35,19 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       as="button"
       border="1px solid lightGray"
       boxShadow="md"
+      disabled={isCorrect !== null ? true : undefined}
+      opacity={isCorrect === null ? "" : "0.4"}
       w="fit-content"
       p="2"
       onClick={guess}
       ref={setNodeRef}
       sx={{
-        transform: transform
-          ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-          : undefined,
+        // We don't want users to be able to make another guess
+        // after the guess has been submitted
+        transform:
+          transform && isCorrect === null
+            ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
+            : undefined,
       }}
       {...listeners}
       {...attributes}

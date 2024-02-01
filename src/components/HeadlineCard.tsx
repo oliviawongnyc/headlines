@@ -15,11 +15,9 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
     setCurrentGuess,
     currentHeadlineIdx,
     setCurrentHeadlineIdx,
-    isCorrect,
-    setIsCorrect,
   } = useHeadline();
   const { setCurrentAnswerBank } = useAnswerBank();
-  const { setScore } = useScore();
+  const { isCorrect, setIsCorrect, setScore } = useScore();
 
   useEffect(() => {
     if (currentGuess && submitRef.current) {
@@ -94,9 +92,11 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
             </Button>
           </Flex>
           <Link
+            borderRadius="var(--chakra-radii-md)"
+            fontSize={["sm", "md"]}
+            p="0.5"
             href={headline.links.article}
             isExternal
-            fontSize={["sm", "md"]}
           >
             Read the full article here →
           </Link>
