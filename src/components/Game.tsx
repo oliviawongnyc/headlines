@@ -1,11 +1,12 @@
 import { Flex, Text, useBreakpointValue } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
-import AnswerBank from "./AnswerBank";
-import HeadlineCard from "./HeadlineCard";
+import AnswerBank from "./Answers/AnswerBank";
+import HeadlineCard from "./Questions/HeadlineCard";
 import {
   DndContext,
   DragEndEvent,
   MouseSensor,
+  PointerSensor,
   TouchSensor,
   useSensor,
   useSensors,
@@ -17,18 +18,31 @@ import { Headline } from "../data/headlines";
 import { useScore } from "../hooks/useScore";
 
 const Game = () => {
-  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
+  const sensors = useSensors(
+    useSensor(MouseSensor),
+    useSensor(TouchSensor),
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    })
+  );
 
-  const { headline, setCurrentGuess, currentHeadlineIdx } = useHeadline();
+  const { headline, gameHeadlines, setCurrentGuess, currentHeadlineIdx } =
+    useHeadline();
   const { setCurrentAnswerBank } = useAnswerBank();
   const { isCorrect } = useScore();
 
-  const fillInBlank = (e: DragEndEvent) => {
+  const makeAGuessOnDrag = (e: DragEndEvent) => {
     const guess = e.active.data.current;
     if (!guess || e.over?.id !== "droppable") return;
+
+    const originalAnswerBank = gameHeadlines[currentHeadlineIdx].answerBank;
     setCurrentGuess(guess.title);
-    setCurrentAnswerBank((prevBank) =>
-      prevBank.filter((possibleAnswer) => possibleAnswer !== guess.title)
+    setCurrentAnswerBank(
+      originalAnswerBank.filter(
+        (possibleAnswer) => possibleAnswer !== guess.title
+      )
     );
   };
 
@@ -48,7 +62,7 @@ const Game = () => {
         mx={["4", "6"]}
       >
         {headline ? (
-          <DndContext onDragEnd={fillInBlank} sensors={sensors}>
+          <DndContext onDragEnd={makeAGuessOnDrag} sensors={sensors}>
             <HeadlineCard headline={headline} />
             <AnswerBank />
           </DndContext>

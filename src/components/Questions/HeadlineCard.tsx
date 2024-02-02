@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
 import GameButtons from "./GameButtons";
-import { Headline } from "../data/headlines";
+import { Headline } from "../../data/headlines";
 import HeadlineAndDate from "./HeadlineAndDate";
 
 const HeadlineCard = ({ headline }: { headline: Headline }) => {

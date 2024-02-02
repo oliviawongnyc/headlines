@@ -1,9 +1,9 @@
 import { useEffect, useRef } from "react";
 import { Button, Flex, Link, useBreakpointValue } from "@chakra-ui/react";
-import { useScore } from "../hooks/useScore";
-import { Headline } from "../data/headlines";
-import { useAnswerBank } from "../hooks/useAnswerBank";
-import { useHeadline } from "../hooks/useHeadline";
+import { useScore } from "../../hooks/useScore";
+import { Headline } from "../../data/headlines";
+import { useAnswerBank } from "../../hooks/useAnswerBank";
+import { useHeadline } from "../../hooks/useHeadline";
 
 const GameButtons = ({ headline }: { headline: Headline }) => {
   const submitRef = useRef<HTMLButtonElement | null>(null);

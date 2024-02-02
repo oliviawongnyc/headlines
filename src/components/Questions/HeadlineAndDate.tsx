@@ -6,11 +6,11 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useHeadline } from "../hooks/useHeadline";
+import { useHeadline } from "../../hooks/useHeadline";
 import { useDroppable } from "@dnd-kit/core";
-import { Headline } from "../data/headlines";
-import { useAnswerBank } from "../hooks/useAnswerBank";
-import { useScore } from "../hooks/useScore";
+import { Headline } from "../../data/headlines";
+import { useAnswerBank } from "../../hooks/useAnswerBank";
+import { useScore } from "../../hooks/useScore";
 
 const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
   const { isOver, setNodeRef } = useDroppable({
@@ -30,6 +30,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
     "1px solid gray.800"
   );
   const boxBg = useColorModeValue("gray.100", "whiteAlpha.200");
+
   return (
     <>
       <Flex align="center" flexWrap="wrap" gap="2">

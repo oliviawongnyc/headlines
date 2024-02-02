@@ -241,7 +241,7 @@ const headlines: Headline[] = [
       "Television",
       "Speaker System",
       "Cellphone",
-      "A.I. Assistant",
+      "V.R. Headset",
     ],
     links: {
       article:
@@ -313,7 +313,7 @@ const headlines: Headline[] = [
     answerBank: [
       "Phone",
       "Railway",
-      "Telegraph",
+      "Telegram",
       "Bus Route",
       "Radio Broadcast",
     ],

@@ -1,6 +1,6 @@
 import { Box, Flex } from "@chakra-ui/react";
 import PossibleAnswer from "./PossibleAnswer";
-import { useAnswerBank } from "../hooks/useAnswerBank";
+import { useAnswerBank } from "../../hooks/useAnswerBank";
 
 const AnswerBank = () => {
   const { currentAnswerBank } = useAnswerBank();

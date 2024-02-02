@@ -1,9 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
-import { useHeadline } from "../hooks/useHeadline";
-import { useAnswerBank } from "../hooks/useAnswerBank";
+import { useHeadline } from "../../hooks/useHeadline";
+import { useAnswerBank } from "../../hooks/useAnswerBank";
 import { useEffect } from "react";
-import { useScore } from "../hooks/useScore";
+import { useScore } from "../../hooks/useScore";
 
 const PossibleAnswer = ({ children }: { children: string }) => {
   const { attributes, isDragging, listeners, setNodeRef, transform } =
@@ -20,10 +20,8 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     setIsDragging(isDragging);
   }, [isDragging, setIsDragging]);
 
-  const guess = () => {
-    const originalAnswerBank = [
-      ...gameHeadlines[currentHeadlineIdx].answerBank,
-    ];
+  const makeAGuessOnClick = () => {
+    const originalAnswerBank = gameHeadlines[currentHeadlineIdx].answerBank;
     setCurrentGuess(children);
     setCurrentAnswerBank(
       originalAnswerBank.filter((possibleAnswer) => possibleAnswer !== children)
@@ -41,7 +39,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       opacity={isCorrect === null ? "" : "0.4"}
       w="fit-content"
       p="2"
-      onClick={guess}
+      onClick={makeAGuessOnClick}
       ref={setNodeRef}
       sx={{
         // We don't want users to be able to drag another guess
