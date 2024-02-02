@@ -16,12 +16,14 @@ import GameOver from "./GameOver";
 import Header from "./Header";
 import { Headline } from "../data/headlines";
 import { useScore } from "../hooks/useScore";
+import { QUESTION_COUNT } from "../data/constants";
 
 const Game = () => {
+  const sensorBasedOnDevice = isMobile() ? TouchSensor : PointerSensor;
+
   const sensors = useSensors(
     useSensor(MouseSensor),
-    useSensor(TouchSensor),
-    useSensor(PointerSensor, {
+    useSensor(sensorBasedOnDevice, {
       activationConstraint: {
         distance: 8,
       },
@@ -74,12 +76,22 @@ const Game = () => {
   );
 };
 
+const isMobile = () => {
+  const regex =
+    /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  return regex.test(navigator.userAgent);
+};
+
 const QuestionCount = ({
   currentHeadlineIdx,
 }: {
   currentHeadlineIdx: number;
 }) => {
-  return <Text fontSize={["sm", "md"]}>{currentHeadlineIdx + 1}/10</Text>;
+  return (
+    <Text fontSize={["sm", "md"]}>
+      {currentHeadlineIdx + 1}/{QUESTION_COUNT}
+    </Text>
+  );
 };
 
 const Feedback = ({

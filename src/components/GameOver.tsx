@@ -1,6 +1,7 @@
 import { Button, Flex, Heading } from "@chakra-ui/react";
 import { useHeadline } from "../hooks/useHeadline";
 import { useScore } from "../hooks/useScore";
+import { QUESTION_COUNT } from "../data/constants";
 
 const GameOver = () => {
   const { setCurrentHeadlineIdx } = useHeadline();
@@ -12,9 +13,9 @@ const GameOver = () => {
   };
 
   const scoreIcon = () => {
-    if (score === 10) return "🥳";
-    else if (score > 8) return "🥂";
-    else if (score >= 5) return "😊";
+    if (score === QUESTION_COUNT) return "🥳";
+    else if (score > QUESTION_COUNT - 2) return "🥂";
+    else if (score >= QUESTION_COUNT - 5) return "😊";
     else return "🫣";
   };
   return (
@@ -27,7 +28,7 @@ const GameOver = () => {
       textAlign="center"
     >
       <Heading as="h2" fontSize="2xl">
-        You answered {score} out of 10 correctly! {scoreIcon()}
+        You answered {score} out of {QUESTION_COUNT} correctly! {scoreIcon()}
       </Heading>
       <Button onClick={resetGame}>Play again</Button>
     </Flex>

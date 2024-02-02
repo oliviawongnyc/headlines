@@ -5,10 +5,10 @@ import Game from "./components/Game";
 import AnswerBankContextProvider from "./hooks/useAnswerBank";
 import headlines from "./data/headlines";
 import ScoreContextProvider from "./hooks/useScore";
+import { QUESTION_COUNT } from "./data/constants";
 
 function App() {
   const gameHeadlines = setCurrentGameHeadlines();
-
   return (
     <ChakraProvider theme={theme}>
       <HeadlineContextProvider gameHeadlines={gameHeadlines}>
@@ -42,7 +42,7 @@ const shuffleHeadlines = () => {
 
 const setCurrentGameHeadlines = () => {
   const shuffledHeadlines = shuffleHeadlines();
-  const gameHeadlines = shuffledHeadlines.slice(0, 10);
+  const gameHeadlines = shuffledHeadlines.slice(0, QUESTION_COUNT);
 
   return gameHeadlines;
 };
