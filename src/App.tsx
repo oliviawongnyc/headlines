@@ -1,11 +1,11 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
-import HeadlineContextProvider from "./hooks/useHeadline";
-import Game from "./components/Game";
-import AnswerBankContextProvider from "./hooks/useAnswerBank";
 import headlines from "./data/headlines";
-import ScoreContextProvider from "./hooks/useScore";
 import { QUESTION_COUNT } from "./data/constants";
+import AnswerBankContextProvider from "./hooks/useAnswerBank";
+import HeadlineContextProvider from "./hooks/useHeadline";
+import ScoreContextProvider from "./hooks/useScore";
+import Game from "./components/Game";
 
 function App() {
   const gameHeadlines = setCurrentGameHeadlines();

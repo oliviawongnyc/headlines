@@ -1,4 +1,6 @@
 import { createContext, useContext, useState } from "react";
+import { useHeadline } from "./useHeadline";
+import { useAnswerBank } from "./useAnswerBank";
 
 type ScoreContextProviderProps = {
   children: React.ReactNode;
@@ -6,9 +8,10 @@ type ScoreContextProviderProps = {
 
 type ScoreContextReturn = {
   isCorrect: boolean | null;
-  setIsCorrect: React.Dispatch<React.SetStateAction<boolean | null>>;
+  setIsCorrect: React.Dispatch<React.SetStateAction<boolean>>;
   score: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
+  submitAGuess: (guess: string) => void;
 };
 
 export const ScoreContext = createContext<ScoreContextReturn | null>(null);
@@ -16,10 +19,27 @@ export const ScoreContext = createContext<ScoreContextReturn | null>(null);
 export default function ScoreContextProvider({
   children,
 }: ScoreContextProviderProps) {
-  // isCorrect is null if a guess has not yet been submitted,
-  // otherwise is true or false.
-  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const { headline, setPlayersGuess } = useHeadline();
+  const { setCurrentAnswerBank } = useAnswerBank();
+
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
+
+  const submitAGuess = (guess: string) => {
+    if (!headline) return;
+    setPlayersGuess(guess);
+    const originalAnswerBank = headline.answerBank;
+    setCurrentAnswerBank(
+      originalAnswerBank.filter((possibleAnswer) => possibleAnswer !== guess)
+    );
+
+    if (guess === headline.correctAnswer) {
+      setIsCorrect(true);
+      setScore((prevScore) => prevScore + 1);
+    } else {
+      setIsCorrect(false);
+    }
+  };
 
   return (
     <ScoreContext.Provider
@@ -28,6 +48,7 @@ export default function ScoreContextProvider({
         setIsCorrect,
         score,
         setScore,
+        submitAGuess,
       }}
     >
       {children}

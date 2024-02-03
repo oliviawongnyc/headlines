@@ -1,7 +1,4 @@
 import { Flex, Text, useBreakpointValue } from "@chakra-ui/react";
-import { useHeadline } from "../hooks/useHeadline";
-import AnswerBank from "./Answers/AnswerBank";
-import HeadlineCard from "./Questions/HeadlineCard";
 import {
   DndContext,
   DragEndEvent,
@@ -11,12 +8,16 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { useAnswerBank } from "../hooks/useAnswerBank";
-import GameOver from "./GameOver";
-import Header from "./Header";
-import { Headline } from "../data/headlines";
-import { useScore } from "../hooks/useScore";
+import { isMobile } from "../data/helpers";
 import { QUESTION_COUNT } from "../data/constants";
+import AnswerBank from "./Answers/AnswerBank";
+import Header from "./Header";
+import HeadlineCard from "./Questions/HeadlineCard";
+import GameOver from "./GameOver";
+import { useHeadline } from "../hooks/useHeadline";
+import { useScore } from "../hooks/useScore";
+import { useAnswerBank } from "../hooks/useAnswerBank";
+import { Headline } from "../data/headlines";
 
 const Game = () => {
   const sensorBasedOnDevice = isMobile() ? TouchSensor : PointerSensor;
@@ -24,28 +25,32 @@ const Game = () => {
   const sensors = useSensors(
     useSensor(MouseSensor),
     useSensor(sensorBasedOnDevice, {
+      // This constraint gives us a way to decipher
+      // between a drag and a click.
       activationConstraint: {
         distance: 2,
       },
     })
   );
 
-  const { headline, gameHeadlines, setCurrentGuess, currentHeadlineIdx } =
-    useHeadline();
   const { setCurrentAnswerBank } = useAnswerBank();
-  const { isCorrect } = useScore();
+  const { currentHeadlineIdx, setDragHappened, headline, playersGuess } =
+    useHeadline();
+  const { isCorrect, submitAGuess } = useScore();
 
-  const makeAGuessOnDrag = (e: DragEndEvent) => {
+  const playerGuessed = !!playersGuess;
+
+  const onDragEnd = (e: DragEndEvent) => {
     const guess = e.active.data.current;
-    if (!guess || e.over?.id !== "droppable") return;
-
-    const originalAnswerBank = gameHeadlines[currentHeadlineIdx].answerBank;
-    setCurrentGuess(guess.title);
-    setCurrentAnswerBank(
-      originalAnswerBank.filter(
-        (possibleAnswer) => possibleAnswer !== guess.title
-      )
-    );
+    if (!guess) return;
+    // If the draggable item is over the correct space, submit the guess
+    if (e.over && e.over.id === "droppable-headline-card") {
+      submitAGuess(guess.title);
+      // else, add it back to the answer bank
+    } else {
+      setCurrentAnswerBank([...(headline as Headline).answerBank]);
+    }
+    setDragHappened(true);
   };
 
   return (
@@ -54,7 +59,12 @@ const Game = () => {
       {headline && (
         <Flex alignItems={["end", "center"]} mb="3" mx={["4", "6"]} gap="2">
           <QuestionCount currentHeadlineIdx={currentHeadlineIdx} />
-          <Feedback headline={headline} isCorrect={isCorrect} />
+          {playerGuessed && (
+            <Feedback
+              correctAnswer={headline.correctAnswer}
+              isCorrect={isCorrect}
+            />
+          )}
         </Flex>
       )}
       <Flex
@@ -64,7 +74,7 @@ const Game = () => {
         mx={["4", "6"]}
       >
         {headline ? (
-          <DndContext onDragEnd={makeAGuessOnDrag} sensors={sensors}>
+          <DndContext onDragEnd={onDragEnd} sensors={sensors}>
             <HeadlineCard headline={headline} />
             <AnswerBank />
           </DndContext>
@@ -74,12 +84,6 @@ const Game = () => {
       </Flex>
     </>
   );
-};
-
-const isMobile = () => {
-  const regex =
-    /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-  return regex.test(navigator.userAgent);
 };
 
 const QuestionCount = ({
@@ -95,24 +99,20 @@ const QuestionCount = ({
 };
 
 const Feedback = ({
-  headline,
+  correctAnswer,
   isCorrect,
 }: {
-  headline?: Headline;
+  correctAnswer: string;
   isCorrect: boolean | null;
 }) => {
   const wrongAnswer = useBreakpointValue({
-    base: `The correct answer is ${headline?.correctAnswer}.`,
-    sm: `Nice try. The correct answer is ${headline?.correctAnswer}.`,
+    base: `The correct answer is ${correctAnswer}.`,
+    sm: `Nice try. The correct answer is ${correctAnswer}.`,
   });
 
   return (
     <Text color={isCorrect ? "correct" : "incorrect"} fontSize={["sm", "md"]}>
-      {headline && isCorrect !== null
-        ? isCorrect
-          ? "Well done!"
-          : wrongAnswer
-        : null}
+      {isCorrect ? "Well done!" : wrongAnswer}
     </Text>
   );
 };

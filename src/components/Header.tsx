@@ -39,8 +39,8 @@ const Header = ({ headline }: { headline?: Headline }) => {
         </Tooltip>
       </Flex>
       {headline && (
-        <Text>
-          Drag the answer into the blank to complete the famous New York Times
+        <Text mt="2">
+          Click or drag the answer to complete the famous New York Times
           headline.
         </Text>
       )}
