@@ -20,7 +20,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     setIsDragging(isDragging);
   }, [isDragging, setIsDragging]);
 
-  const makeAGuessOnClick = () => {
+  const makeAGuessOnClick = (e: any) => {
     const originalAnswerBank = gameHeadlines[currentHeadlineIdx].answerBank;
     setCurrentGuess(children);
     setCurrentAnswerBank(
@@ -39,9 +39,11 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       opacity={isCorrect === null ? "" : "0.4"}
       w="fit-content"
       p="2"
+      onTouchEnd={makeAGuessOnClick}
       onClick={makeAGuessOnClick}
       ref={setNodeRef}
       sx={{
+        touchAction: "none",
         // We don't want users to be able to drag another guess
         // after the previous guess has been submitted
         transform:

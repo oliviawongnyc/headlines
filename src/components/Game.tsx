@@ -20,17 +20,14 @@ import { QUESTION_COUNT } from "../data/constants";
 
 const Game = () => {
   const sensorBasedOnDevice = isMobile() ? TouchSensor : PointerSensor;
-  const constraintBasedOnDevice = isMobile()
-    ? {}
-    : {
-        activationConstraint: {
-          distance: 8,
-        },
-      };
 
   const sensors = useSensors(
     useSensor(MouseSensor),
-    useSensor(sensorBasedOnDevice, constraintBasedOnDevice)
+    useSensor(sensorBasedOnDevice, {
+      activationConstraint: {
+        distance: 2,
+      },
+    })
   );
 
   const { headline, gameHeadlines, setCurrentGuess, currentHeadlineIdx } =
