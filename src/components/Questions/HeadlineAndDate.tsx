@@ -6,20 +6,22 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useHeadline } from "../../hooks/useHeadline";
 import { useDroppable } from "@dnd-kit/core";
 import { Headline } from "../../data/headlines";
 import { useAnswerBank } from "../../hooks/useAnswerBank";
 import { useScore } from "../../hooks/useScore";
+import { useHeadline } from "../../hooks/useHeadline";
 
 const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
-  const { isOver, setNodeRef } = useDroppable({
-    id: "droppable",
+  const { isOver, setNodeRef: setBlankRef } = useDroppable({
+    id: "droppable-headline-card",
   });
   const { isOpen, onOpen, onToggle, onClose } = useDisclosure();
   const { isDragging } = useAnswerBank();
-  const { currentGuess } = useHeadline();
+  const { playersGuess } = useHeadline();
   const { isCorrect } = useScore();
+
+  const playerGuessed = !!playersGuess;
 
   // Light and dark mode colors
   const tooltipBg = useColorModeValue("white", "gray.800");
@@ -44,7 +46,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                   closeOnClick={false}
                   hasArrow
                   label={
-                    !isDragging && !currentGuess
+                    !isDragging && !playerGuessed
                       ? "Drag and drop an answer from below"
                       : ""
                   }
@@ -53,19 +55,19 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                 >
                   <Box
                     bg={isOver ? boxBg : undefined}
-                    borderBottom={!currentGuess ? blankBorder : undefined}
-                    h={currentGuess ? "fit-content" : "40px"}
-                    w={currentGuess ? "fit-content" : "150px"}
+                    borderBottom={playerGuessed ? undefined : blankBorder}
+                    h={playerGuessed ? "fit-content" : "40px"}
+                    w={playerGuessed ? "fit-content" : "150px"}
                     opacity={isOver ? "0.5" : undefined}
                     onMouseEnter={onOpen}
                     onMouseLeave={onClose}
                     onClick={onToggle}
-                    ref={setNodeRef}
+                    ref={setBlankRef}
                   >
                     <Heading
                       as="h2"
-                      border={currentGuess ? "1px solid lightGray" : undefined}
-                      boxShadow={currentGuess ? "md" : undefined}
+                      border={playerGuessed ? "1px solid lightGray" : undefined}
+                      boxShadow={playerGuessed ? "md" : undefined}
                       p="2"
                       color={
                         isCorrect === true
@@ -76,7 +78,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                       }
                       fontSize="3xl"
                     >
-                      {currentGuess}
+                      {playersGuess}
                     </Heading>
                   </Box>
                 </Tooltip>

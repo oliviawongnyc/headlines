@@ -28,15 +28,15 @@ export default function AnswerBankContextProvider({
     Headline["answerBank"]
   >([]);
   const [isDragging, setIsDragging] = useState<boolean>(false);
-  const { currentHeadlineIdx } = useHeadline();
+  const { headline } = useHeadline();
 
   useEffect(() => {
-    if (!gameHeadlines[currentHeadlineIdx]) {
+    if (!headline) {
       setCurrentAnswerBank([]);
     } else {
-      setCurrentAnswerBank([...gameHeadlines[currentHeadlineIdx].answerBank]);
+      setCurrentAnswerBank([...headline.answerBank]);
     }
-  }, [gameHeadlines, currentHeadlineIdx]);
+  }, [headline]);
 
   return (
     <AnswerBankContext.Provider

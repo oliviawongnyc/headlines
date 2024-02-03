@@ -1,53 +1,58 @@
 import { Box } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
-import { useHeadline } from "../../hooks/useHeadline";
 import { useAnswerBank } from "../../hooks/useAnswerBank";
 import { useEffect } from "react";
+import { isMobile } from "../../data/helpers";
 import { useScore } from "../../hooks/useScore";
+import { useHeadline } from "../../hooks/useHeadline";
 
 const PossibleAnswer = ({ children }: { children: string }) => {
-  const { attributes, isDragging, listeners, setNodeRef, transform } =
-    useDraggable({
-      id: children,
-      data: { title: children },
-    });
+  const {
+    attributes,
+    isDragging,
+    listeners,
+    setNodeRef: setDraggableGuessRef,
+    transform,
+  } = useDraggable({
+    id: children,
+    data: { title: children },
+  });
 
-  const { setCurrentAnswerBank, setIsDragging } = useAnswerBank();
-  const { currentHeadlineIdx, gameHeadlines, setCurrentGuess } = useHeadline();
-  const { isCorrect } = useScore();
+  const { setIsDragging } = useAnswerBank();
+  const { dragHappened, setDragHappened, playersGuess } = useHeadline();
+  const { submitAGuess } = useScore();
+
+  const playerGuessed = !!playersGuess;
 
   useEffect(() => {
     setIsDragging(isDragging);
   }, [isDragging, setIsDragging]);
-
-  const makeAGuessOnClick = (e: any) => {
-    const originalAnswerBank = gameHeadlines[currentHeadlineIdx].answerBank;
-    setCurrentGuess(children);
-    setCurrentAnswerBank(
-      originalAnswerBank.filter((possibleAnswer) => possibleAnswer !== children)
-    );
-  };
 
   return (
     <Box
       as="button"
       border="1px solid lightGray"
       boxShadow="md"
-      // We don't want users to be able to focus/click another guess
-      // after the previous guess has been submitted
-      disabled={isCorrect !== null ? true : undefined}
-      opacity={isCorrect === null ? "" : "0.4"}
+      disabled={playerGuessed ? true : undefined}
+      opacity={playerGuessed ? "0.4" : ""}
       w="fit-content"
       p="2"
-      onTouchEnd={makeAGuessOnClick}
-      onClick={makeAGuessOnClick}
-      ref={setNodeRef}
+      {...(isMobile() && {
+        onTouchEnd: () => {
+          if (!dragHappened) {
+            submitAGuess(children);
+          }
+          setDragHappened(false);
+        },
+      })}
+      {...(!isMobile() && {
+        onClick: () => submitAGuess(children),
+      })}
+      ref={setDraggableGuessRef}
       sx={{
         touchAction: "none",
-        // We don't want users to be able to drag another guess
-        // after the previous guess has been submitted
         transform:
-          transform && isCorrect === null
+          transform && !playerGuessed
             ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
             : undefined,
       }}
