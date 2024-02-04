@@ -41,14 +41,16 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       p="2"
       {...(isMobile() && {
         onTouchEnd: () => {
-          if (!dragHappened) {
+          if (!dragHappened && !playerGuessed) {
             submitAGuess(children);
           }
           setDragHappened(false);
         },
       })}
       {...(!isMobile() && {
-        onClick: () => submitAGuess(children),
+        onClick: () => {
+          if (!playerGuessed) submitAGuess(children);
+        },
       })}
       ref={setDraggableGuessRef}
       sx={{
