@@ -7,6 +7,10 @@ import { useScore } from "../../hooks/useScore";
 import { useHeadline } from "../../hooks/useHeadline";
 
 const PossibleAnswer = ({ children }: { children: string }) => {
+  const { dragHappened, setDragHappened, playersGuess } = useHeadline();
+
+  const playerGuessed = !!playersGuess;
+
   const {
     attributes,
     isDragging,
@@ -16,13 +20,11 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   } = useDraggable({
     id: children,
     data: { title: children },
+    disabled: playerGuessed,
   });
 
   const { setIsDragging } = useAnswerBank();
-  const { dragHappened, setDragHappened, playersGuess } = useHeadline();
   const { submitAGuess } = useScore();
-
-  const playerGuessed = !!playersGuess;
 
   useEffect(() => {
     setIsDragging(isDragging);
