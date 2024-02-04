@@ -20,7 +20,7 @@ import { useAnswerBank } from "../hooks/useAnswerBank";
 import { Headline } from "../data/headlines";
 
 const Game = () => {
-  const sensorBasedOnDevice = isMobile() ? TouchSensor : PointerSensor;
+  const sensorBasedOnDevice = isMobile ? TouchSensor : PointerSensor;
 
   const sensors = useSensors(
     useSensor(MouseSensor),

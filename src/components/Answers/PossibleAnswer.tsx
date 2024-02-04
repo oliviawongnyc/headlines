@@ -36,10 +36,12 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       border="1px solid lightGray"
       boxShadow="md"
       disabled={playerGuessed ? true : undefined}
+      fontFamily="heading"
+      fontSize="md"
       opacity={playerGuessed ? "0.4" : ""}
       w="fit-content"
       p="2"
-      {...(isMobile() && {
+      {...(isMobile && {
         onTouchEnd: () => {
           if (!dragHappened && !playerGuessed) {
             submitAGuess(children);
@@ -47,7 +49,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
           setDragHappened(false);
         },
       })}
-      {...(!isMobile() && {
+      {...(!isMobile && {
         onClick: () => {
           if (!playerGuessed) submitAGuess(children);
         },

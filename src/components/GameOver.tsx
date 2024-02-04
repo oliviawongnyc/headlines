@@ -21,13 +21,12 @@ const GameOver = () => {
     setScore(0);
   };
 
-  const scoreIcon = () => {
+  const scorePunctuation = () => {
     if (score === QUESTION_COUNT) {
       conductor?.shoot();
-      return "🥳";
-    } else if (score > QUESTION_COUNT - 2) return "🥂";
-    else if (score >= QUESTION_COUNT - 5) return "😊";
-    else return "🫣";
+    }
+    if (score > QUESTION_COUNT - 3) return "!";
+    else return ".";
   };
 
   return (
@@ -39,8 +38,9 @@ const GameOver = () => {
       p="6"
       textAlign="center"
     >
-      <Heading as="h2" fontSize="2xl">
-        You answered {score} out of {QUESTION_COUNT} correctly! {scoreIcon()}
+      <Heading as="h2" fontFamily="News Cycle" fontSize="2xl">
+        You answered {score} out of {QUESTION_COUNT} correctly
+        {scorePunctuation()}
       </Heading>
       <Button onClick={resetGame}>Play again</Button>
       <Realistic onInit={onInit} />

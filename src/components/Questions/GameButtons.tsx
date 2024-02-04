@@ -15,9 +15,11 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
   } = useHeadline();
   const { setIsCorrect } = useScore();
 
+  const playerGuessed = !!playersGuess;
+
   useEffect(() => {
-    if (playersGuess && nextRef.current) nextRef.current.focus();
-  }, [playersGuess]);
+    if (playerGuessed && nextRef.current) nextRef.current.focus();
+  }, [playerGuessed]);
 
   const nextHeadlineOrFinish = () => {
     setPlayersGuess("");
@@ -33,22 +35,25 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
   return (
     <Flex mt="6" alignItems="end" justifyContent="space-between">
       <Button
+        isDisabled={!playerGuessed}
         onClick={nextHeadlineOrFinish}
         ref={nextRef}
         variant="outline"
         size={["sm", "md"]}
       >
-        {currentHeadlineIdx < 9 ? "Next Headline" : "Finish"}
+        {currentHeadlineIdx < 9 ? "Next" : "Finish"}
       </Button>
-      <Link
-        borderRadius="var(--chakra-radii-md)"
-        fontSize={["sm", "md"]}
-        p="0.5"
-        href={headline.links.article}
-        isExternal
-      >
-        {linkText}
-      </Link>
+      {playerGuessed && (
+        <Link
+          borderRadius="var(--chakra-radii-md)"
+          fontSize={["sm", "md"]}
+          p="0.5"
+          href={headline.links.article}
+          isExternal
+        >
+          {linkText}
+        </Link>
+      )}
     </Flex>
   );
 };

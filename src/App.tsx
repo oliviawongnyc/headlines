@@ -1,5 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./theme";
+import "./theme/fonts.css";
 import headlines from "./data/headlines";
 import { QUESTION_COUNT } from "./data/constants";
 import AnswerBankContextProvider from "./hooks/useAnswerBank";

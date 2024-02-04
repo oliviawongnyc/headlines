@@ -6,8 +6,7 @@ import { useHeadline } from "../../hooks/useHeadline";
 import { useEffect } from "react";
 
 const HeadlineCard = ({ headline }: { headline: Headline }) => {
-  const { playersGuess, setDragHappened } = useHeadline();
-  const playerGuessed = !!playersGuess;
+  const { setDragHappened } = useHeadline();
 
   useEffect(() => {
     setDragHappened(false);
@@ -22,7 +21,7 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       w="100%"
     >
       <HeadlineAndDate headline={headline} />
-      {playerGuessed && <GameButtons headline={headline} />}
+      <GameButtons headline={headline} />
     </Flex>
   );
 };

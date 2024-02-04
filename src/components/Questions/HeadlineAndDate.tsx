@@ -2,6 +2,7 @@ import {
   Box,
   Flex,
   Heading,
+  Text,
   Tooltip,
   useColorModeValue,
   useDisclosure,
@@ -35,7 +36,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
 
   return (
     <>
-      <Flex align="center" flexWrap="wrap" gap="2">
+      <Flex align="baseline" flexWrap="wrap" gap="2">
         {headline.headline.map((part) => {
           if (!part) {
             return (
@@ -98,11 +99,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
           );
         })}
       </Flex>
-      {headline && (
-        <Heading as="h3" fontSize="md" mt="2">
-          Published {headline.date}
-        </Heading>
-      )}
+      {headline && <Text mt="2">Published {headline.date}</Text>}
     </>
   );
 };

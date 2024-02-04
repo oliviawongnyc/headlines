@@ -1,5 +1,7 @@
 import { ThemeConfig, extendTheme } from "@chakra-ui/react";
 import "@fontsource/news-cycle";
+import "@fontsource/bevan";
+import "@fontsource-variable/libre-franklin";
 
 const config: ThemeConfig = {
   initialColorMode: "system",
@@ -12,8 +14,9 @@ const theme = extendTheme({
     incorrect: "#d0021b",
   },
   fonts: {
-    heading: `'News Cycle', Verdana, sans-serif`,
-    body: `'News Cycle', Verdana, sans-serif`,
+    header: `'Bevan', sans-serif`,
+    heading: `'News Cycle', sans-serif`,
+    body: `'News Cycle', sans-serif`,
   },
   config,
 });

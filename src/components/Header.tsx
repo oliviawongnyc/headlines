@@ -1,10 +1,10 @@
 import {
+  Box,
   Button,
   Flex,
   Heading,
   Text,
   Tooltip,
-  useBreakpointValue,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -12,18 +12,36 @@ import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { Headline } from "../data/headlines";
 
 const Header = ({ headline }: { headline?: Headline }) => {
-  const newspaperEmoji = useBreakpointValue({ base: null, sm: "🗞️" });
   const { toggleColorMode } = useColorMode();
   const colorModeIcon = useColorModeValue(
     <MoonIcon boxSize="4" />,
     <SunIcon boxSize="4" />
   );
   const colorModeString = useColorModeValue("dark mode", "light mode");
+  const dividerColor = useColorModeValue("black", "white");
   return (
     <Flex flexDir="column" my="10" mx={["4", "6"]}>
       <Flex alignItems="center" justifyContent="space-between">
-        <Heading as="h1" fontSize="4xl">
-          NYT Headlines {newspaperEmoji}
+        <Heading
+          as="h1"
+          fontFamily="header"
+          fontSize="3xl"
+          fontWeight="normal"
+          letterSpacing={-1}
+        >
+          <Flex alignItems="center" gap="2">
+            <span
+              style={{
+                fontFamily: "Chomsky",
+                fontSize: "37px",
+                fontWeight: 400,
+              }}
+            >
+              T
+            </span>
+            <Box w="1px" h="30px" bgColor={dividerColor} />
+            Headlines
+          </Flex>
         </Heading>
         <Tooltip
           hasArrow
