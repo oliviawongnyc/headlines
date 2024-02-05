@@ -26,6 +26,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     disabled: playerGuessed,
   });
 
+  console.log("isDragging ->", isDragging);
   // We add isDragging to context so other
   // components know
   useEffect(() => {
@@ -33,19 +34,19 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   }, [isDragging, setIsDragging]);
 
   const onTouchOrClick = () => {
+    console.log("touch or clicked");
     if (!dragFinishing && !playerGuessed) {
+      console.log("entering if");
       submitAGuess(children);
     }
   };
 
   const answerStyles = {
+    bgColor: activeBackground,
     boxShadow: "md",
     borderRadius: "none",
     isDisabled: playerGuessed ? true : undefined,
     w: "fit-content",
-    _active: {
-      bg: activeBackground,
-    },
     _focus: {
       outline: "none",
       ring: "2px",
