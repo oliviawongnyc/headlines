@@ -60,7 +60,6 @@ const PossibleAnswer = ({ children }: { children: string }) => {
         onTouchEnd: onTouchOrClick,
       })}
       {...(isBrowser && {
-        onClick: onTouchOrClick,
         onMouseUp: onTouchOrClick,
       })}
       ref={setDraggableGuessRef}
