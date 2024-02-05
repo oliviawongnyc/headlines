@@ -48,7 +48,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                   hasArrow
                   label={
                     !isDragging && !playerGuessed
-                      ? "Drag and drop an answer from below"
+                      ? "Click or drag an answer from below"
                       : ""
                   }
                   isOpen={isOpen}

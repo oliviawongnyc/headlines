@@ -1,14 +1,15 @@
+import { useEffect } from "react";
 import { Box } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
+import { isBrowser, isMobile } from "react-device-detect";
 import { useAnswerBank } from "../../hooks/useAnswerBank";
-import { useEffect } from "react";
-import { isMobile } from "../../data/helpers";
 import { useScore } from "../../hooks/useScore";
 import { useHeadline } from "../../hooks/useHeadline";
 
 const PossibleAnswer = ({ children }: { children: string }) => {
-  const { dragHappened, setDragHappened, playersGuess } = useHeadline();
-
+  const { dragFinishing, playersGuess } = useHeadline();
+  const { setIsDragging } = useAnswerBank();
+  const { submitAGuess } = useScore();
   const playerGuessed = !!playersGuess;
 
   const {
@@ -22,9 +23,6 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     data: { title: children },
     disabled: playerGuessed,
   });
-
-  const { setIsDragging } = useAnswerBank();
-  const { submitAGuess } = useScore();
 
   useEffect(() => {
     setIsDragging(isDragging);
@@ -43,15 +41,16 @@ const PossibleAnswer = ({ children }: { children: string }) => {
       p="2"
       {...(isMobile && {
         onTouchEnd: () => {
-          if (!dragHappened && !playerGuessed) {
+          if (!dragFinishing && !playerGuessed) {
             submitAGuess(children);
           }
-          setDragHappened(false);
         },
       })}
-      {...(!isMobile && {
-        onClick: () => {
-          if (!playerGuessed) submitAGuess(children);
+      {...(isBrowser && {
+        onMouseUp: () => {
+          if (!dragFinishing && !playerGuessed) {
+            submitAGuess(children);
+          }
         },
       })}
       ref={setDraggableGuessRef}

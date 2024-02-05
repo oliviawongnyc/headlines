@@ -45,7 +45,7 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
       </Button>
       {playerGuessed && (
         <Link
-          borderRadius="var(--chakra-radii-md)"
+          borderRadius="md"
           fontSize={["sm", "md"]}
           p="0.5"
           href={headline.links.article}

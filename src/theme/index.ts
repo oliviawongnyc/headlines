@@ -10,8 +10,8 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
   colors: {
-    correct: "#6aaa64",
-    incorrect: "#d0021b",
+    correct: "#a0c35a",
+    incorrect: "#ff6666",
   },
   fonts: {
     header: `'Bevan', sans-serif`,

@@ -8,7 +8,7 @@ import {
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { isMobile } from "../data/helpers";
+import { isMobile } from "react-device-detect";
 import { QUESTION_COUNT } from "../data/constants";
 import AnswerBank from "./Answers/AnswerBank";
 import Header from "./Header";
@@ -34,7 +34,7 @@ const Game = () => {
   );
 
   const { setCurrentAnswerBank } = useAnswerBank();
-  const { currentHeadlineIdx, setDragHappened, headline, playersGuess } =
+  const { currentHeadlineIdx, setDragFinishing, headline, playersGuess } =
     useHeadline();
   const { isCorrect, submitAGuess } = useScore();
 
@@ -46,11 +46,16 @@ const Game = () => {
     // If the draggable item is over the correct space, submit the guess
     if (e.over && e.over.id === "droppable-headline-card") {
       submitAGuess(guess.title);
+      setDragFinishing(true);
       // else, add it back to the answer bank
     } else {
       setCurrentAnswerBank([...(headline as Headline).answerBank]);
+      setDragFinishing(true);
     }
-    setDragHappened(true);
+
+    // We keep track of a drag that is finishing for 2 milliseconds
+    // to avoid conflicts with click events.
+    setTimeout(() => setDragFinishing(false), 200);
   };
 
   return (
@@ -92,7 +97,7 @@ const QuestionCount = ({
   currentHeadlineIdx: number;
 }) => {
   return (
-    <Text fontSize={["sm", "md"]}>
+    <Text fontSize={["md", "lg"]}>
       {currentHeadlineIdx + 1}/{QUESTION_COUNT}
     </Text>
   );

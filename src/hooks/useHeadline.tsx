@@ -9,8 +9,8 @@ type HeadlineContextProviderProps = {
 type HeadlineContextReturn = {
   currentHeadlineIdx: number;
   setCurrentHeadlineIdx: React.Dispatch<React.SetStateAction<number>>;
-  dragHappened: boolean;
-  setDragHappened: React.Dispatch<React.SetStateAction<boolean>>;
+  dragFinishing: boolean;
+  setDragFinishing: React.Dispatch<React.SetStateAction<boolean>>;
   gameHeadlines: Headline[];
   headline: Headline | undefined;
   playersGuess: string;
@@ -27,15 +27,15 @@ export default function HeadlineContextProvider({
 }: HeadlineContextProviderProps) {
   const [playersGuess, setPlayersGuess] = useState<string>("");
   const [currentHeadlineIdx, setCurrentHeadlineIdx] = useState<number>(0);
-  const [dragHappened, setDragHappened] = useState<boolean>(false);
+  const [dragFinishing, setDragFinishing] = useState<boolean>(false);
 
   return (
     <HeadlineContext.Provider
       value={{
         currentHeadlineIdx,
         setCurrentHeadlineIdx,
-        dragHappened,
-        setDragHappened,
+        dragFinishing,
+        setDragFinishing,
         gameHeadlines,
         headline: gameHeadlines[currentHeadlineIdx],
         playersGuess,

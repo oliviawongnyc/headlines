@@ -12,6 +12,7 @@ const AnswerBank = () => {
   return (
     <Box
       border="1px solid lightGray"
+      borderRadius="md"
       boxShadow="md"
       p={["4", "6"]}
       w="100%"
