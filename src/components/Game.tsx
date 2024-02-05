@@ -61,23 +61,18 @@ const Game = () => {
   return (
     <>
       <Header headline={headline} />
-      {headline && (
-        <Flex alignItems={["end", "center"]} mb="3" mx={["4", "6"]} gap="2">
-          <QuestionCount currentHeadlineIdx={currentHeadlineIdx} />
-          {playerGuessed && (
-            <Feedback
-              correctAnswer={headline.correctAnswer}
-              isCorrect={isCorrect}
-            />
-          )}
-        </Flex>
-      )}
-      <Flex
-        alignItems={headline ? "flex-start" : "center"}
-        flexDir="column"
-        gap={["5", "7"]}
-        mx={["4", "6"]}
-      >
+      <Flex flexDir="column" margin="auto" w={["90%", "90%", "80%"]}>
+        {headline && (
+          <Flex alignItems={["end", "center"]} gap="2">
+            <QuestionCount currentHeadlineIdx={currentHeadlineIdx} />
+            {playerGuessed && (
+              <Feedback
+                correctAnswer={headline.correctAnswer}
+                isCorrect={isCorrect}
+              />
+            )}
+          </Flex>
+        )}
         {headline ? (
           <DndContext onDragEnd={onDragEnd} sensors={sensors}>
             <HeadlineCard headline={headline} />

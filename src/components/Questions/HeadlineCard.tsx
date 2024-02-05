@@ -10,8 +10,8 @@ const HeadlineCard = ({ headline }: { headline: Headline }) => {
       borderRadius="md"
       boxShadow="md"
       flexDir="column"
+      mb={["5", "7"]}
       p={["4", "6"]}
-      w="100%"
     >
       <HeadlineAndDate headline={headline} />
       <GameButtons headline={headline} />

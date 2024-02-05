@@ -32,10 +32,13 @@ const GameOver = () => {
   return (
     <Flex
       border="1px solid lightGray"
+      borderRadius="md"
       boxShadow="md"
       flexDir="column"
       gap="7"
-      p="6"
+      justifyContent="center"
+      px="10"
+      py="20"
       textAlign="center"
     >
       <Heading as="h2" fontFamily="News Cycle" fontSize="2xl">
