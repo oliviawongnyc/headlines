@@ -91,9 +91,11 @@ const QuestionCount = ({
 }: {
   currentHeadlineIdx: number;
 }) => {
+  const questionProgress = `${currentHeadlineIdx + 1}/${QUESTION_COUNT}`;
+
   return (
-    <Text fontSize={["md", "lg"]}>
-      {currentHeadlineIdx + 1}/{QUESTION_COUNT}
+    <Text aria-label={`Question ${questionProgress}`} fontSize={["md", "lg"]}>
+      {questionProgress}
     </Text>
   );
 };
@@ -111,7 +113,11 @@ const Feedback = ({
   });
 
   return (
-    <Text color={isCorrect ? "correct" : "incorrect"} fontSize={["sm", "md"]}>
+    <Text
+      aria-live="assertive"
+      color={isCorrect ? "correct" : "incorrect"}
+      fontSize={["sm", "md"]}
+    >
       {isCorrect ? "Well done!" : wrongAnswer}
     </Text>
   );

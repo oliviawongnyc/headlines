@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Box } from "@chakra-ui/react";
+import { Button, useColorModeValue } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
 import { isBrowser, isMobile } from "react-device-detect";
 import { useAnswerBank } from "../../hooks/useAnswerBank";
@@ -11,6 +11,8 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   const { setIsDragging } = useAnswerBank();
   const { submitAGuess } = useScore();
   const playerGuessed = !!playersGuess;
+
+  const activeBackground = useColorModeValue("white", "gray.800");
 
   const {
     attributes,
@@ -36,21 +38,29 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     }
   };
 
+  const answerStyles = {
+    boxShadow: "md",
+    borderRadius: "none",
+    isDisabled: playerGuessed ? true : undefined,
+    w: "fit-content",
+    _active: {
+      bg: activeBackground,
+    },
+    _focus: {
+      outline: "none",
+      ring: "2px",
+      ringColor: "focusRingColor",
+    },
+  };
+
   return (
-    <Box
-      as="button"
+    <Button
       aria-label={`Select ${children}`}
-      border="1px solid lightGray"
-      boxShadow="md"
-      disabled={playerGuessed ? true : undefined}
-      fontSize="md"
-      opacity={playerGuessed ? "0.4" : ""}
-      w="fit-content"
-      p="2"
       {...(isMobile && {
         onTouchEnd: onTouchOrClick,
       })}
       {...(isBrowser && {
+        onClick: onTouchOrClick,
         onMouseUp: onTouchOrClick,
       })}
       ref={setDraggableGuessRef}
@@ -61,11 +71,13 @@ const PossibleAnswer = ({ children }: { children: string }) => {
             ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
             : undefined,
       }}
+      variant="outline"
+      {...answerStyles}
       {...listeners}
       {...attributes}
     >
       {children}
-    </Box>
+    </Button>
   );
 };
 

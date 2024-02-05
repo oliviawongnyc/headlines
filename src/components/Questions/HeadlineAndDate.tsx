@@ -33,11 +33,16 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
     "1px solid gray.800"
   );
   const boxBg = useColorModeValue("gray.100", "whiteAlpha.200");
+  const answerBorder = useColorModeValue("gray.200", "whiteAlpha.300");
 
   return (
     <>
       <Heading as="h2" fontSize="3xl">
-        <Flex align="baseline" flexWrap="wrap" gap="2">
+        <Flex
+          alignItems={playerGuessed ? "baseline" : ""}
+          flexWrap="wrap"
+          gap="2"
+        >
           {headline.headline.map((part) => {
             if (part) {
               return (
@@ -66,6 +71,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                     placement="top"
                   >
                     <Box
+                      aria-label={playerGuessed ? playersGuess : "blank"}
                       bg={isOver ? boxBg : undefined}
                       borderBottom={playerGuessed ? undefined : blankBorder}
                       h={playerGuessed ? "fit-content" : "40px"}
@@ -77,9 +83,8 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                       ref={setBlankRef}
                     >
                       <Text
-                        border={
-                          playerGuessed ? "1px solid lightGray" : undefined
-                        }
+                        border={playerGuessed ? "1px solid" : undefined}
+                        borderColor={answerBorder}
                         boxShadow={playerGuessed ? "md" : undefined}
                         p="2"
                         color={

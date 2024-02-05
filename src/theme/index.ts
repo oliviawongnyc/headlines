@@ -12,6 +12,7 @@ const theme = extendTheme({
   colors: {
     correct: "#a0c35a",
     incorrect: "#ff6666",
+    focusRingColor: "#4d88f9",
   },
   fonts: {
     header: `'Bevan', sans-serif`,

@@ -38,8 +38,13 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
         isDisabled={!playerGuessed}
         onClick={nextHeadlineOrFinish}
         ref={nextRef}
-        variant="outline"
         size={["sm", "md"]}
+        _focus={{
+          outline: "none",
+          ring: "2px",
+          ringColor: "focusRingColor",
+        }}
+        variant="outline"
       >
         {currentHeadlineIdx < 9 ? "Next" : "Finish"}
       </Button>
@@ -47,9 +52,14 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
         <Link
           borderRadius="md"
           fontSize={["sm", "md"]}
-          p="0.5"
+          p="1"
           href={headline.links.article}
           isExternal
+          _focus={{
+            outline: "none",
+            ring: "2px",
+            ringColor: "focusRingColor",
+          }}
         >
           {linkText}
         </Link>
