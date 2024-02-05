@@ -36,69 +36,71 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
 
   return (
     <>
-      <Flex align="baseline" flexWrap="wrap" gap="2">
-        {headline.headline.map((part) => {
-          if (!part) {
-            return (
-              <Flex flexDir="column" key={`${headline.id}-blank`}>
-                <Tooltip
-                  bg={tooltipBg}
-                  color={textColor}
-                  closeOnClick={false}
-                  hasArrow
-                  label={
-                    !isDragging && !playerGuessed
-                      ? "Click or drag an answer from below"
-                      : ""
-                  }
-                  isOpen={isOpen}
-                  placement="top"
+      <Heading as="h2" fontSize="3xl">
+        <Flex align="baseline" flexWrap="wrap" gap="2">
+          {headline.headline.map((part) => {
+            if (part) {
+              return (
+                <Box
+                  borderBottom={borderReverse}
+                  h="40px"
+                  key={`${headline.id}-${part}`}
                 >
-                  <Box
-                    bg={isOver ? boxBg : undefined}
-                    borderBottom={playerGuessed ? undefined : blankBorder}
-                    h={playerGuessed ? "fit-content" : "40px"}
-                    w={playerGuessed ? "fit-content" : "150px"}
-                    opacity={isOver ? "0.5" : undefined}
-                    onMouseEnter={onOpen}
-                    onMouseLeave={onClose}
-                    onClick={onToggle}
-                    ref={setBlankRef}
+                  {part}
+                </Box>
+              );
+            } else {
+              return (
+                <Flex flexDir="column" key={`${headline.id}-blank`}>
+                  <Tooltip
+                    bg={tooltipBg}
+                    color={textColor}
+                    closeOnClick={false}
+                    hasArrow
+                    label={
+                      !isDragging && !playerGuessed
+                        ? "Click or drag an answer from below"
+                        : ""
+                    }
+                    isOpen={isOpen}
+                    placement="top"
                   >
-                    <Heading
-                      as="h2"
-                      border={playerGuessed ? "1px solid lightGray" : undefined}
-                      boxShadow={playerGuessed ? "md" : undefined}
-                      p="2"
-                      color={
-                        isCorrect === true
-                          ? "correct"
-                          : isCorrect === false
-                          ? "incorrect"
-                          : textColor
-                      }
-                      fontSize="3xl"
+                    <Box
+                      bg={isOver ? boxBg : undefined}
+                      borderBottom={playerGuessed ? undefined : blankBorder}
+                      h={playerGuessed ? "fit-content" : "40px"}
+                      w={playerGuessed ? "fit-content" : "150px"}
+                      opacity={isOver ? "0.5" : undefined}
+                      onMouseEnter={onOpen}
+                      onMouseLeave={onClose}
+                      onClick={onToggle}
+                      ref={setBlankRef}
                     >
-                      {playersGuess}
-                    </Heading>
-                  </Box>
-                </Tooltip>
-              </Flex>
-            );
-          }
-          return (
-            <Box
-              borderBottom={borderReverse}
-              h="40px"
-              key={`${headline.id}-${part}`}
-            >
-              <Heading as="h2" fontSize="3xl">
-                {part}
-              </Heading>
-            </Box>
-          );
-        })}
-      </Flex>
+                      <Text
+                        border={
+                          playerGuessed ? "1px solid lightGray" : undefined
+                        }
+                        boxShadow={playerGuessed ? "md" : undefined}
+                        p="2"
+                        color={
+                          isCorrect === true
+                            ? "correct"
+                            : isCorrect === false
+                            ? "incorrect"
+                            : textColor
+                        }
+                        fontSize="3xl"
+                      >
+                        {playersGuess}
+                      </Text>
+                    </Box>
+                  </Tooltip>
+                </Flex>
+              );
+            }
+          })}
+        </Flex>
+      </Heading>
       {headline && <Text mt="2">Published {headline.date}</Text>}
     </>
   );

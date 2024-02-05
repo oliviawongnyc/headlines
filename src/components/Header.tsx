@@ -33,7 +33,7 @@ const Header = ({ headline }: { headline?: Headline }) => {
             <span
               style={{
                 fontFamily: "Chomsky",
-                fontSize: "37px",
+                fontSize: "40px",
                 fontWeight: 400,
               }}
             >

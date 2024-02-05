@@ -24,34 +24,34 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     disabled: playerGuessed,
   });
 
+  // We add isDragging to context so other
+  // components know
   useEffect(() => {
     setIsDragging(isDragging);
   }, [isDragging, setIsDragging]);
 
+  const onTouchOrClick = () => {
+    if (!dragFinishing && !playerGuessed) {
+      submitAGuess(children);
+    }
+  };
+
   return (
     <Box
       as="button"
+      aria-label={`Select ${children}`}
       border="1px solid lightGray"
       boxShadow="md"
       disabled={playerGuessed ? true : undefined}
-      fontFamily="heading"
       fontSize="md"
       opacity={playerGuessed ? "0.4" : ""}
       w="fit-content"
       p="2"
       {...(isMobile && {
-        onTouchEnd: () => {
-          if (!dragFinishing && !playerGuessed) {
-            submitAGuess(children);
-          }
-        },
+        onTouchEnd: onTouchOrClick,
       })}
       {...(isBrowser && {
-        onMouseUp: () => {
-          if (!dragFinishing && !playerGuessed) {
-            submitAGuess(children);
-          }
-        },
+        onMouseUp: onTouchOrClick,
       })}
       ref={setDraggableGuessRef}
       sx={{
