@@ -63,7 +63,7 @@ const Game = () => {
       <Header headline={headline} />
       <Flex flexDir="column" margin="auto" w={["90%", "90%", "80%"]}>
         {headline && (
-          <Flex alignItems={["end", "center"]} gap="2">
+          <Flex alignItems={["end", "center"]} gap="2" mb="1">
             <QuestionCount currentHeadlineIdx={currentHeadlineIdx} />
             {playerGuessed && (
               <Feedback
