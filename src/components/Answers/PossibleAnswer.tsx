@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button, useColorModeValue } from "@chakra-ui/react";
+import { Box, useColorModeValue } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
 import { isBrowser, isMobile } from "react-device-detect";
 import { useAnswerBank } from "../../hooks/useAnswerBank";
@@ -13,6 +13,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   const playerGuessed = !!playersGuess;
 
   const activeBackground = useColorModeValue("white", "gray.800");
+  const answerBorder = useColorModeValue("gray.200", "whiteAlpha.300");
 
   const {
     attributes,
@@ -26,7 +27,6 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     disabled: playerGuessed,
   });
 
-  console.log("isDragging ->", isDragging);
   // We add isDragging to context so other
   // components know
   useEffect(() => {
@@ -34,19 +34,29 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   }, [isDragging, setIsDragging]);
 
   const onTouchOrClick = () => {
-    console.log("touch or clicked");
     if (!dragFinishing && !playerGuessed) {
-      console.log("entering if");
       submitAGuess(children);
     }
   };
 
+  const handleKeyPressed = (e: any) => {
+    // Check if the pressed key is Enter (key code 13)
+    if (e.key === "Enter") {
+      // Perform the action you want on Enter key press
+      onTouchOrClick();
+    }
+  };
+
   const answerStyles = {
+    border: "1px solid",
+    borderColor: answerBorder,
     bgColor: activeBackground,
     boxShadow: "md",
-    borderRadius: "none",
-    isDisabled: playerGuessed ? true : undefined,
+    p: "2",
     w: "fit-content",
+    _disabled: {
+      opacity: 0.4,
+    },
     _focus: {
       outline: "none",
       ring: "2px",
@@ -55,30 +65,30 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   };
 
   return (
-    <Button
+    <Box
+      as="button"
+      disabled={playerGuessed ? true : undefined}
       aria-label={`Select ${children}`}
       {...(isMobile && {
         onTouchEnd: onTouchOrClick,
       })}
       {...(isBrowser && {
-        onClick: onTouchOrClick,
-        // onMouseUp: onTouchOrClick,
+        onKeyPress: handleKeyPressed,
+        onMouseUp: onTouchOrClick,
       })}
       ref={setDraggableGuessRef}
       sx={{
         touchAction: "none",
-        transform:
-          transform && !playerGuessed
-            ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-            : undefined,
+        transform: transform
+          ? `translate3d(${transform.x}px, ${transform.y}px, 0)`
+          : undefined,
       }}
-      variant="outline"
       {...answerStyles}
       {...listeners}
       {...attributes}
     >
       {children}
-    </Button>
+    </Box>
   );
 };
 
