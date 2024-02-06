@@ -430,7 +430,115 @@ const headlines: Headline[] = [
     ],
     links: {
       article:
-        "https://timesmachine.nytimes.com/timesmachine/1977/03/13/80222509.html?smtyp=cur&smid=tw-nytarchives&pageNumber=44",
+        "https://timesmachine.nytimes.com/timesmachine/1979/08/26/111192137.html?smid=tw-nytarchives&smtyp=cur&pageNumber=109",
+    },
+  },
+  {
+    id: 24,
+    date: "March 8, 1974",
+    headline: ["Bold", "", "Airport", "to", "be", "Europe's", "Biggest"],
+    correctAnswer: "Paris",
+    answerBank: ["Copenhagen", "Moscow", "London", "Paris", "Madrid"],
+    links: {
+      article:
+        "https://timesmachine.nytimes.com/timesmachine/1974/03/08/99160033.html?pageNumber=35&smid=tw-nytarchives&smtyp=cur",
+    },
+  },
+  {
+    id: 25,
+    date: "March 7, 1981",
+    headline: [
+      "Amid",
+      "the",
+      "Fuss,",
+      "",
+      "Says",
+      "a",
+      "Quiet",
+      "'Good",
+      "Night'",
+    ],
+    correctAnswer: "Cronkite",
+    answerBank: [
+      "Dan Rather",
+      "Rick Moranis",
+      "Reagan",
+      "Margaret Thatcher",
+      "Cronkite",
+    ],
+    links: {
+      article:
+        "https://timesmachine.nytimes.com/timesmachine/1981/03/07/032255.html?smid=tw-nytarchives&smtyp=cur&pageNumber=47",
+    },
+  },
+  {
+    id: 26,
+    date: "March 6, 1956",
+    headline: [
+      "Segregation",
+      "Ban",
+      "Extended",
+      "To",
+      "",
+      "by",
+      "High",
+      "Court",
+    ],
+    correctAnswer: "Colleges",
+    answerBank: [
+      "Colleges",
+      "Movie Theaters",
+      "Public Parks",
+      "All Employers",
+      "Airline Travel",
+    ],
+    links: {
+      article:
+        "https://timesmachine.nytimes.com/timesmachine/1956/03/06/86542177.html?smid=tw-nytarchives&smtyp=cur&pageNumber=1",
+    },
+  },
+  {
+    id: 27,
+    date: "March 31, 1983",
+    headline: ["", "Replacement", "for", "LP's?"],
+    correctAnswer: "Digital Compact Disks:",
+    answerBank: [
+      "Digital Compact Disks:",
+      "Cassette Tapes:",
+      "Vinyl:",
+      "Radio:",
+      "Streaming:",
+    ],
+    links: {
+      article:
+        "https://timesmachine.nytimes.com/timesmachine/1983/03/31/068545.html?pageNumber=61&smtyp=cur&smid=tw-nytarchives",
+    },
+  },
+  {
+    id: 28,
+    date: "February 17, 1923",
+    headline: [
+      "",
+      "Inner",
+      "Tomb",
+      "Is",
+      "Opened,",
+      "Revealing",
+      "Undreamed",
+      "of",
+      "Splendors",
+    ],
+    correctAnswer: "Tut-Ankh-Amen's",
+    answerBank: [
+      "Cleopatra's",
+      "Napoleon's",
+      "Tut-Ankh-Amen's",
+      "Medici",
+      "St. Anthony's'",
+    ],
+    links: {
+      article:
+        "https://timesmachine.nytimes.com/timesmachine/1923/02/17/105847440.html?smtyp=cur&smid=tw-nytarchives&pageNumber=1",
     },
   },
 ];

@@ -26,19 +26,21 @@ function App() {
 export default App;
 
 const shuffleHeadlines = () => {
-  const headlinesToChooseFrom = [...headlines];
-  let currentIndex = headlinesToChooseFrom.length,
+  const shuffledHeadlines = [...headlines];
+  let currentIndex = shuffledHeadlines.length,
     randomIndex;
 
   while (currentIndex > 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
-    [headlinesToChooseFrom[currentIndex], headlinesToChooseFrom[randomIndex]] =
-      [headlinesToChooseFrom[randomIndex], headlinesToChooseFrom[currentIndex]];
+    [shuffledHeadlines[currentIndex], shuffledHeadlines[randomIndex]] = [
+      shuffledHeadlines[randomIndex],
+      shuffledHeadlines[currentIndex],
+    ];
   }
 
-  return headlinesToChooseFrom;
+  return shuffledHeadlines;
 };
 
 const setCurrentGameHeadlines = () => {
