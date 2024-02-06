@@ -6,13 +6,7 @@ import { useAnswerBank } from "../../hooks/useAnswerBank";
 import { useScore } from "../../hooks/useScore";
 import { useHeadline } from "../../hooks/useHeadline";
 
-const PossibleAnswer = ({
-  children,
-  idx,
-}: {
-  children: string;
-  idx: number;
-}) => {
+const PossibleAnswer = ({ children }: { children: string }) => {
   const { dragFinishing, playersGuess } = useHeadline();
   const { setIsDragging } = useAnswerBank();
   const { submitAGuess } = useScore();
@@ -58,10 +52,11 @@ const PossibleAnswer = ({
     boxShadow: "md",
     p: "2",
     w: "fit-content",
+    outline: "none",
     _disabled: {
       opacity: 0.4,
     },
-    _focus: {
+    _focusWithin: {
       outline: "none",
       ring: "2px",
       ringColor: "focusRingColor",
@@ -71,7 +66,6 @@ const PossibleAnswer = ({
   return (
     <Box
       as="button"
-      autoFocus={idx === 0}
       disabled={playerGuessed ? true : undefined}
       aria-label={`Select ${children}`}
       {...(isMobile && {
