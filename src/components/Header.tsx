@@ -51,6 +51,11 @@ const Header = ({ headline }: { headline?: Headline }) => {
           <Button
             aria-label={`Switch to ${colorModeString}`}
             onClick={toggleColorMode}
+            _focus={{
+              outline: "none",
+              ring: "2px",
+              ringColor: "focusRingColor",
+            }}
           >
             {colorModeIcon}
           </Button>

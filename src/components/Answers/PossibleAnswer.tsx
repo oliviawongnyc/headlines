@@ -56,7 +56,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     _disabled: {
       opacity: 0.4,
     },
-    _focusWithin: {
+    _focus: {
       outline: "none",
       ring: "2px",
       ringColor: "focusRingColor",
