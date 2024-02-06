@@ -39,7 +39,7 @@ const Header = ({ headline }: { headline?: Headline }) => {
             >
               T
             </span>
-            <Box w="1px" h="30px" bgColor={dividerColor} />
+            <Box w="1px" h="25px" bgColor={dividerColor} />
             Headlines
           </Flex>
         </Heading>

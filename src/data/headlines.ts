@@ -244,8 +244,7 @@ const headlines: Headline[] = [
       "V.R. Headset",
     ],
     links: {
-      article:
-        "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0106.html",
+      article: "https://www.nytimes.com/2007/01/10/technology/10apple.html",
     },
   },
   {
@@ -374,6 +373,64 @@ const headlines: Headline[] = [
     links: {
       article:
         "https://www.nytimes.com/1934/05/24/archives/barrow-and-woman-are-slain-by-police-in-louisiana-trap-bandit-pair.html",
+    },
+  },
+  {
+    id: 21,
+    date: "March 22, 1963",
+    headline: ["", "Which", "Held", "Tough", "Ones", "Closes", "as", "Prison"],
+    correctAnswer: "Alcatraz,",
+    answerBank: [
+      "Sing Sing,",
+      "Eastern State Penitentiary,",
+      "Fort Delaware,",
+      "Pottawattamie County Jail,",
+      "Alcatraz,",
+    ],
+    links: {
+      article:
+        "https://timesmachine.nytimes.com/timesmachine/1963/03/22/96968423.html?pageNumber=1&smtyp=cur&smid=tw-nytarchives",
+    },
+  },
+  {
+    id: 22,
+    date: "March 13, 1977",
+    headline: [
+      "Astronomers",
+      "Announce",
+      "Satellites",
+      "Discovered",
+      "Around",
+      "",
+    ],
+    correctAnswer: "Planet Uranus",
+    answerBank: [
+      "Exoplanet 51 Pegasi b",
+      "Planet Uranus",
+      "Asteroid, or Comet, Oumuamua",
+      "Star Proxima Centauri,",
+      "Planet Mars",
+    ],
+    links: {
+      article:
+        "https://timesmachine.nytimes.com/timesmachine/1977/03/13/80222509.html?smtyp=cur&smid=tw-nytarchives&pageNumber=44",
+    },
+  },
+  {
+    id: 23,
+    date: "August 26, 1979",
+    headline: ["", "the", "Plastic", "Princess", "of", "Toyland"],
+    correctAnswer: "Barbie,",
+    answerBank: [
+      "Cinderella,",
+      "Barbie,",
+      "Belle,",
+      "Samantha,",
+      "Polly Pocket,",
+    ],
+    links: {
+      article:
+        "https://timesmachine.nytimes.com/timesmachine/1977/03/13/80222509.html?smtyp=cur&smid=tw-nytarchives&pageNumber=44",
     },
   },
 ];
