@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, KeyboardEvent } from "react";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 import { useDraggable } from "@dnd-kit/core";
 import { isBrowser, isMobile } from "react-device-detect";
@@ -45,11 +45,8 @@ const PossibleAnswer = ({
     }
   };
 
-  const handleKeyPressed = (e: any) => {
-    console.log("e -->", e);
-    // Check if the pressed key is Enter (key code 13)
+  const handleKeyPressed = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
-      // Perform the action you want on Enter key press
       onTouchOrClick();
     }
   };
