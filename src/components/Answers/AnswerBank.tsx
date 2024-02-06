@@ -20,7 +20,11 @@ const AnswerBank = () => {
     >
       <Flex flexWrap="wrap" gap="2">
         {currentAnswerBank.map((answer, idx) => {
-          return <PossibleAnswer key={answer}>{answer}</PossibleAnswer>;
+          return (
+            <PossibleAnswer idx={idx} key={answer}>
+              {answer}
+            </PossibleAnswer>
+          );
         })}
       </Flex>
     </Box>

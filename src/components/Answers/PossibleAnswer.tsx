@@ -6,7 +6,13 @@ import { useAnswerBank } from "../../hooks/useAnswerBank";
 import { useScore } from "../../hooks/useScore";
 import { useHeadline } from "../../hooks/useHeadline";
 
-const PossibleAnswer = ({ children }: { children: string }) => {
+const PossibleAnswer = ({
+  children,
+  idx,
+}: {
+  children: string;
+  idx: number;
+}) => {
   const { dragFinishing, playersGuess } = useHeadline();
   const { setIsDragging } = useAnswerBank();
   const { submitAGuess } = useScore();
@@ -40,6 +46,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   };
 
   const handleKeyPressed = (e: any) => {
+    console.log("e -->", e);
     // Check if the pressed key is Enter (key code 13)
     if (e.key === "Enter") {
       // Perform the action you want on Enter key press
@@ -67,6 +74,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   return (
     <Box
       as="button"
+      autoFocus={idx === 0}
       disabled={playerGuessed ? true : undefined}
       aria-label={`Select ${children}`}
       {...(isMobile && {
