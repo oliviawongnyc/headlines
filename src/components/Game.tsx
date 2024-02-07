@@ -17,7 +17,6 @@ import GameOver from "./GameOver";
 import { useHeadline } from "../hooks/useHeadline";
 import { useScore } from "../hooks/useScore";
 import { useAnswerBank } from "../hooks/useAnswerBank";
-import { Headline } from "../data/headlines";
 
 const Game = () => {
   const sensorBasedOnDevice = isMobile ? TouchSensor : PointerSensor;
@@ -49,7 +48,7 @@ const Game = () => {
       setDragFinishing(true);
       // else, add it back to the answer bank
     } else {
-      setCurrentAnswerBank([...(headline as Headline).answerBank]);
+      setCurrentAnswerBank(headline?.answerBank || []);
       setDragFinishing(true);
     }
 

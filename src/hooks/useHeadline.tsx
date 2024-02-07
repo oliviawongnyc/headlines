@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-import { Headline } from "../data/headlines";
 
 type HeadlineContextProviderProps = {
   children: React.ReactNode;

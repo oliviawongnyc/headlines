@@ -19,7 +19,7 @@ const AnswerBank = () => {
       ref={setAnswerBankRef}
     >
       <Flex flexWrap="wrap" gap="2">
-        {currentAnswerBank.map((answer) => {
+        {currentAnswerBank?.map((answer) => {
           return <PossibleAnswer key={answer}>{answer}</PossibleAnswer>;
         })}
       </Flex>

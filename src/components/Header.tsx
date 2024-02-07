@@ -9,7 +9,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
-import { Headline } from "../data/headlines";
 
 const Header = ({ headline }: { headline?: Headline }) => {
   const { toggleColorMode } = useColorMode();

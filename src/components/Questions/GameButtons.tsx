@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { Button, Flex, Link, useBreakpointValue } from "@chakra-ui/react";
-import { Headline } from "../../data/headlines";
 import { useHeadline } from "../../hooks/useHeadline";
 import { useScore } from "../../hooks/useScore";
 
@@ -53,7 +52,7 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
           borderRadius="md"
           fontSize={["sm", "md"]}
           p="1"
-          href={headline.links.article}
+          href={headline.articleLink}
           isExternal
           _focus={{
             outline: "none",

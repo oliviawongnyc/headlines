@@ -1,5 +1,4 @@
 import { Flex } from "@chakra-ui/react";
-import { Headline } from "../../data/headlines";
 import GameButtons from "./GameButtons";
 import HeadlineAndDate from "./HeadlineAndDate";
 
