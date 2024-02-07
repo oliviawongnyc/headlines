@@ -6,7 +6,11 @@ import { useHeadline } from "../hooks/useHeadline";
 import { useScore } from "../hooks/useScore";
 import { QUESTION_COUNT } from "../data/constants";
 
-const GameOver = () => {
+const GameOver = ({
+  setClickedPlay,
+}: {
+  setClickedPlay: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [conductor, setConductor] = useState<TConductorInstance>();
 
   const { setCurrentHeadlineIdx } = useHeadline();
@@ -17,6 +21,7 @@ const GameOver = () => {
   };
 
   const resetGame = () => {
+    setClickedPlay(false);
     setCurrentHeadlineIdx(0);
     setScore(0);
   };

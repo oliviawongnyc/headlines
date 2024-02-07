@@ -1,14 +1,13 @@
 import {
-  Box,
   Button,
   Flex,
-  Heading,
   Text,
   Tooltip,
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { SunIcon, MoonIcon } from "@chakra-ui/icons";
+import GameTitle from "./GameTitle";
 
 const Header = ({ headline }: { headline?: Headline }) => {
   const { toggleColorMode } = useColorMode();
@@ -17,31 +16,10 @@ const Header = ({ headline }: { headline?: Headline }) => {
     <SunIcon boxSize="4" />
   );
   const colorModeString = useColorModeValue("dark mode", "light mode");
-  const dividerColor = useColorModeValue("black", "white");
   return (
     <Flex flexDir="column" my="10" mx={["4", "6"]}>
       <Flex alignItems="center" justifyContent="space-between">
-        <Heading
-          as="h1"
-          fontFamily="header"
-          fontSize="3xl"
-          fontWeight="normal"
-          letterSpacing={-1}
-        >
-          <Flex alignItems="center" gap="2">
-            <span
-              style={{
-                fontFamily: "Chomsky",
-                fontSize: "40px",
-                fontWeight: 400,
-              }}
-            >
-              T
-            </span>
-            <Box w="1px" h="25px" bgColor={dividerColor} />
-            Headlines
-          </Flex>
-        </Heading>
+        <GameTitle />
         <Tooltip
           hasArrow
           label={`Switch to ${colorModeString}`}

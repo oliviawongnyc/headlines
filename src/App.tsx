@@ -7,6 +7,7 @@ import AnswerBankContextProvider from "./hooks/useAnswerBank";
 import HeadlineContextProvider from "./hooks/useHeadline";
 import ScoreContextProvider from "./hooks/useScore";
 import Game from "./components/Game";
+import Landing from "./components/Landing";
 
 const supabaseUrl = process.env.REACT_APP_DB_URL;
 const supabaseKey = process.env.REACT_APP_DB_KEY;
@@ -18,11 +19,14 @@ if (!supabaseUrl || !supabaseKey) {
 const supabase = createClient<Database>(supabaseUrl, supabaseKey);
 
 function App() {
+  const [clickedPlay, setClickedPlay] = useState<boolean>(false);
   const [gameHeadlines, setGameHeadlines] = useState<Headline[]>([]);
 
   useEffect(() => {
-    getHeadlines();
-  }, []);
+    if (clickedPlay) {
+      getHeadlines();
+    }
+  }, [clickedPlay]);
 
   async function getHeadlines() {
     const { data: gameHeadlines } = await supabase
@@ -33,12 +37,20 @@ function App() {
     setGameHeadlines(gameHeadlines || []);
   }
 
+  const startGame = () => {
+    setClickedPlay(true);
+  };
+
   return (
     <ChakraProvider theme={theme}>
       <HeadlineContextProvider gameHeadlines={gameHeadlines}>
         <AnswerBankContextProvider>
           <ScoreContextProvider>
-            <Game />
+            {clickedPlay ? (
+              <Game setClickedPlay={setClickedPlay} />
+            ) : (
+              <Landing startGame={startGame} />
+            )}
           </ScoreContextProvider>
         </AnswerBankContextProvider>
       </HeadlineContextProvider>
