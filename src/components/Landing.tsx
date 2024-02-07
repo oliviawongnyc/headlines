@@ -12,7 +12,7 @@ const Landing = ({ startGame }: { startGame: () => void }) => {
       h="100vh"
     >
       <GameTitle isLandingPage={true} />
-      <Text color="black" mb="5">
+      <Text color="black" fontSize="large" mb="5">
         Complete the famous headline in history.
       </Text>
       <Button
@@ -37,7 +37,7 @@ const Landing = ({ startGame }: { startGame: () => void }) => {
       <Text
         color="black"
         fontFamily="landing"
-        fontSize="small"
+        fontSize="medium"
         fontWeight="bold"
       >
         {returnFormattedDate()}
