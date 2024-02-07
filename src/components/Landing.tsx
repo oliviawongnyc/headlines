@@ -11,8 +11,10 @@ const Landing = ({ startGame }: { startGame: () => void }) => {
       justifyContent="center"
       h="100vh"
     >
-      <GameTitle />
-      <Text mb="5">Complete the famous headline in history.</Text>
+      <GameTitle isLandingPage={true} />
+      <Text color="black" mb="5">
+        Complete the famous headline in history.
+      </Text>
       <Button
         borderRadius="3xl"
         bgColor="black"
@@ -32,10 +34,15 @@ const Landing = ({ startGame }: { startGame: () => void }) => {
       >
         Play
       </Button>
-      <Text fontFamily="landing" fontSize="small" fontWeight="bold">
+      <Text
+        color="black"
+        fontFamily="landing"
+        fontSize="small"
+        fontWeight="bold"
+      >
         {returnFormattedDate()}
       </Text>
-      <Text fontFamily="landing" fontSize="x-small">
+      <Text color="black" fontFamily="landing" fontSize="x-small">
         Edited by Olivia Wong
       </Text>
     </Flex>

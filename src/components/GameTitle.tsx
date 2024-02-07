@@ -1,11 +1,12 @@
 import { Box, Flex, Heading, useColorModeValue } from "@chakra-ui/react";
 
-const GameTitle = () => {
+const GameTitle = ({ isLandingPage }: { isLandingPage?: boolean }) => {
   const dividerColor = useColorModeValue("black", "white");
 
   return (
     <Heading
       as="h1"
+      color={isLandingPage ? "black" : undefined}
       fontFamily="header"
       fontSize="3xl"
       fontWeight="normal"
@@ -21,7 +22,11 @@ const GameTitle = () => {
         >
           T
         </span>
-        <Box w="1px" h="25px" bgColor={dividerColor} />
+        <Box
+          w="1px"
+          h="25px"
+          bgColor={isLandingPage ? "black" : dividerColor}
+        />
         Headlines
       </Flex>
     </Heading>
