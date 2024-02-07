@@ -18,7 +18,11 @@ import { useHeadline } from "../hooks/useHeadline";
 import { useScore } from "../hooks/useScore";
 import { useAnswerBank } from "../hooks/useAnswerBank";
 
-const Game = () => {
+const Game = ({
+  setClickedPlay,
+}: {
+  setClickedPlay: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const sensorBasedOnDevice = isMobile ? TouchSensor : PointerSensor;
 
   const sensors = useSensors(
@@ -78,7 +82,7 @@ const Game = () => {
             <AnswerBank />
           </DndContext>
         ) : (
-          <GameOver />
+          <GameOver setClickedPlay={setClickedPlay} />
         )}
       </Flex>
     </>

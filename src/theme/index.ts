@@ -10,6 +10,7 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
   colors: {
+    landing: "#4d88f9",
     correct: "#a0c35a",
     incorrect: "#ff6666",
     focusRingColor: "#4d88f9",
@@ -18,6 +19,7 @@ const theme = extendTheme({
     header: `'Bevan', sans-serif`,
     heading: `'News Cycle', sans-serif`,
     body: `'News Cycle', sans-serif`,
+    landing: `'Libre Franklin Variable', sans-serif;`,
   },
   config,
 });
