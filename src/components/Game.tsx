@@ -82,7 +82,7 @@ const Game = ({
             <AnswerBank />
           </DndContext>
         ) : (
-          <GameOver setClickedPlay={setClickedPlay} />
+          <GameOver />
         )}
       </Flex>
     </>

@@ -23,10 +23,8 @@ function App() {
   const [gameHeadlines, setGameHeadlines] = useState<Headline[]>([]);
 
   useEffect(() => {
-    if (clickedPlay) {
-      getHeadlines();
-    }
-  }, [clickedPlay]);
+    getHeadlines();
+  }, []);
 
   async function getHeadlines() {
     const { data: gameHeadlines } = await supabase
@@ -37,9 +35,7 @@ function App() {
     setGameHeadlines(gameHeadlines || []);
   }
 
-  const startGame = () => {
-    setClickedPlay(true);
-  };
+  const startGame = () => setClickedPlay(true);
 
   return (
     <ChakraProvider theme={theme}>
