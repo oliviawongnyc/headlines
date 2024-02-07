@@ -14,6 +14,7 @@ const AnswerBank = () => {
       border="1px solid lightGray"
       borderRadius="md"
       boxShadow="md"
+      mb="5"
       p={["4", "6"]}
       w="100%"
       ref={setAnswerBankRef}
