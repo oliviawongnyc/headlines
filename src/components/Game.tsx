@@ -82,7 +82,7 @@ const Game = ({
             <AnswerBank />
           </DndContext>
         ) : (
-          <GameOver />
+          <GameOver setClickedPlay={setClickedPlay} />
         )}
       </Flex>
     </>
@@ -119,7 +119,7 @@ const Feedback = ({
     <Text
       aria-live="assertive"
       color={isCorrect ? "correct" : "incorrect"}
-      fontSize={["sm", "md"]}
+      fontSize="md"
     >
       {isCorrect ? "Well done!" : wrongAnswer}
     </Text>

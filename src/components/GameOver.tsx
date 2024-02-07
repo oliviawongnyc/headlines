@@ -2,20 +2,28 @@ import { useState } from "react";
 import { Button, Flex, Heading } from "@chakra-ui/react";
 import Realistic from "react-canvas-confetti/dist/presets/realistic";
 import { TConductorInstance } from "react-canvas-confetti/dist/types";
+import { useHeadline } from "../hooks/useHeadline";
 import { useScore } from "../hooks/useScore";
 import { QUESTION_COUNT } from "../data/constants";
 
-const GameOver = () => {
+const GameOver = ({
+  setClickedPlay,
+}: {
+  setClickedPlay: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [conductor, setConductor] = useState<TConductorInstance>();
 
-  const { score } = useScore();
+  const { setCurrentHeadlineIdx } = useHeadline();
+  const { score, setScore } = useScore();
 
   const onInit = ({ conductor }: { conductor: TConductorInstance }) => {
     setConductor(conductor);
   };
 
   const resetGame = () => {
-    window.location.reload();
+    setClickedPlay(false);
+    setCurrentHeadlineIdx(0);
+    setScore(0);
   };
 
   const scorePunctuation = () => {

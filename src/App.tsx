@@ -23,8 +23,10 @@ function App() {
   const [gameHeadlines, setGameHeadlines] = useState<Headline[]>([]);
 
   useEffect(() => {
-    getHeadlines();
-  }, []);
+    // We want to fetch the headlines before "play" is clicked
+    // so there is no wait when the game starts.
+    if (!clickedPlay) getHeadlines();
+  }, [clickedPlay]);
 
   async function getHeadlines() {
     const { data: gameHeadlines } = await supabase
