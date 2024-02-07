@@ -1,10 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { Headline } from "../data/headlines";
 import { useHeadline } from "./useHeadline";
 
 type AnswerBankContextProviderProps = {
   children: React.ReactNode;
-  gameHeadlines: Headline[];
 };
 
 type AnswerBankContextReturn = {
@@ -22,7 +20,6 @@ export const AnswerBankContext = createContext<AnswerBankContextReturn | null>(
 
 export default function AnswerBankContextProvider({
   children,
-  gameHeadlines,
 }: AnswerBankContextProviderProps) {
   const [currentAnswerBank, setCurrentAnswerBank] = useState<
     Headline["answerBank"]
@@ -31,11 +28,7 @@ export default function AnswerBankContextProvider({
   const { headline } = useHeadline();
 
   useEffect(() => {
-    if (!headline) {
-      setCurrentAnswerBank([]);
-    } else {
-      setCurrentAnswerBank([...headline.answerBank]);
-    }
+    setCurrentAnswerBank(headline?.answerBank || []);
   }, [headline]);
 
   return (

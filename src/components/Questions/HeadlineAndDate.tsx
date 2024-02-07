@@ -8,7 +8,6 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useDroppable } from "@dnd-kit/core";
-import { Headline } from "../../data/headlines";
 import { useAnswerBank } from "../../hooks/useAnswerBank";
 import { useScore } from "../../hooks/useScore";
 import { useHeadline } from "../../hooks/useHeadline";
@@ -43,8 +42,8 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
           flexWrap="wrap"
           gap="2"
         >
-          {headline.headline.map((part) => {
-            if (part) {
+          {headline.headlineWithBlank.split(" ").map((part) => {
+            if (part !== "_") {
               return (
                 <Box
                   borderBottom={borderReverse}
@@ -106,7 +105,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
           })}
         </Flex>
       </Heading>
-      {headline && <Text mt="2">Published {headline.date}</Text>}
+      {headline && <Text mt="2">Published {headline.publishDate}</Text>}
     </>
   );
 };
