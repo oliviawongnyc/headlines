@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Flex, Heading } from "@chakra-ui/react";
+import { Button, Flex, Heading, Text } from "@chakra-ui/react";
 import Realistic from "react-canvas-confetti/dist/presets/realistic";
 import { TConductorInstance } from "react-canvas-confetti/dist/types";
 import { useHeadline } from "../hooks/useHeadline";
@@ -26,31 +26,54 @@ const GameOver = ({
     setScore(0);
   };
 
-  const scorePunctuation = () => {
-    if (score === QUESTION_COUNT) {
-      conductor?.shoot();
-    }
-    if (score > QUESTION_COUNT - 3) return "!";
-    else return ".";
+  const finalFeedback = () => {
+    const exclamation =
+      score === QUESTION_COUNT
+        ? "Perfect!"
+        : score >= QUESTION_COUNT - 2
+        ? "Excellent!"
+        : score >= QUESTION_COUNT - 4
+        ? "Well done!"
+        : score >= QUESTION_COUNT - 6
+        ? "Not bad!"
+        : "Next time.";
+    const feedbackDetail = `You answered ${score} out of ${QUESTION_COUNT} correctly.`;
+
+    if (score === QUESTION_COUNT) conductor?.shoot();
+
+    return (
+      <>
+        <Heading
+          as="h2"
+          fontFamily="header"
+          fontSize="xl"
+          fontWeight="normal"
+          letterSpacing={-1}
+        >
+          {exclamation}
+        </Heading>
+        <Text fontFamily="body" mb="8">
+          {feedbackDetail}
+        </Text>
+      </>
+    );
   };
 
   return (
     <Flex
+      alignItems="center"
       border="1px solid lightGray"
       borderRadius="md"
       boxShadow="md"
       flexDir="column"
-      gap="7"
       justifyContent="center"
-      px="10"
-      py="20"
+      py="16"
       textAlign="center"
     >
-      <Heading as="h2" fontFamily="News Cycle" fontSize="2xl">
-        You answered {score} out of {QUESTION_COUNT} correctly
-        {scorePunctuation()}
-      </Heading>
-      <Button onClick={resetGame}>Play again</Button>
+      {finalFeedback()}
+      <Button borderRadius="3xl" onClick={resetGame} variant="outline">
+        Play again
+      </Button>
       <Realistic
         onInit={onInit}
         decorateOptions={(options) => ({

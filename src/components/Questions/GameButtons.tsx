@@ -34,6 +34,7 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
   return (
     <Flex mt="6" alignItems="end" justifyContent="space-between">
       <Button
+        borderRadius="3xl"
         isDisabled={!playerGuessed}
         onClick={nextHeadlineOrFinish}
         ref={nextRef}
