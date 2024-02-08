@@ -9,7 +9,7 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { isMobile } from "react-device-detect";
-import { QUESTION_COUNT } from "../data/constants";
+import { QUESTION_COUNT } from "../constants";
 import AnswerBank from "./Answers/AnswerBank";
 import Header from "./Header";
 import HeadlineCard from "./Questions/HeadlineCard";

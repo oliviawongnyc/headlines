@@ -4,7 +4,7 @@ import Realistic from "react-canvas-confetti/dist/presets/realistic";
 import { TConductorInstance } from "react-canvas-confetti/dist/types";
 import { useHeadline } from "../hooks/useHeadline";
 import { useScore } from "../hooks/useScore";
-import { QUESTION_COUNT } from "../data/constants";
+import { QUESTION_COUNT } from "../constants";
 
 const GameOver = ({
   setClickedPlay,

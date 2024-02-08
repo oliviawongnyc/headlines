@@ -24,7 +24,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
   const playerGuessed = !!playersGuess;
 
   // Light and dark mode colors
-  const tooltipBg = useColorModeValue("white", "gray.800");
+  const tooltipBg = useColorModeValue("gray.100", "gray.700");
   const textColor = useColorModeValue("black", "white");
   const blankBorder = useColorModeValue("1px solid black", "1px solid white");
   const borderReverse = useColorModeValue(
