@@ -71,7 +71,15 @@ const GameOver = ({
       textAlign="center"
     >
       {finalFeedback()}
-      <Button borderRadius="3xl" onClick={resetGame} variant="outline">
+      <Button
+        onClick={resetGame}
+        variant="outline"
+        _focus={{
+          outline: "none",
+          ring: "2px",
+          ringColor: "focusRingColor",
+        }}
+      >
         Play again
       </Button>
       <Realistic
@@ -79,6 +87,8 @@ const GameOver = ({
         decorateOptions={(options) => ({
           ...options,
           colors: ["#ffc600"],
+          gravity: 0.75,
+          scalar: 0.75,
           shapes: ["star"],
         })}
       />

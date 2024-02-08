@@ -1,6 +1,5 @@
-import { Flex, Text } from "@chakra-ui/layout";
+import { Button, Flex, Image, Text } from "@chakra-ui/react";
 import GameTitle from "./GameTitle";
-import { Button } from "@chakra-ui/button";
 
 const Landing = ({ startGame }: { startGame: () => void }) => {
   return (
@@ -11,8 +10,9 @@ const Landing = ({ startGame }: { startGame: () => void }) => {
       justifyContent="center"
       h="100vh"
     >
+      <Image boxSize="75px" mb="4" src="headlinesPNGNoBackground.png" />
       <GameTitle isLandingPage={true} />
-      <Text color="black" fontSize="large" mb="5">
+      <Text color="black" fontSize="large" mb="3">
         Complete the famous headline in history.
       </Text>
       <Button

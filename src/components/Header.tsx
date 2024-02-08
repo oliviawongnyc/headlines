@@ -36,7 +36,17 @@ const Header = ({ headline }: { headline?: Headline }) => {
             label="Instructions"
             placement="top"
           >
-            <Button onClick={onOpen} variant="outline" px={0} size="sm">
+            <Button
+              onClick={onOpen}
+              variant="outline"
+              px={0}
+              size="sm"
+              _focus={{
+                outline: "none",
+                ring: "2px",
+                ringColor: "focusRingColor",
+              }}
+            >
               <QuestionOutlineIcon boxSize="4" />
             </Button>
           </Tooltip>
