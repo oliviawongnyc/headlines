@@ -51,7 +51,14 @@ const GameOver = ({
         {scorePunctuation()}
       </Heading>
       <Button onClick={resetGame}>Play again</Button>
-      <Realistic onInit={onInit} />
+      <Realistic
+        onInit={onInit}
+        decorateOptions={(options) => ({
+          ...options,
+          colors: ["#ffc600"],
+          shapes: ["star"],
+        })}
+      />
     </Flex>
   );
 };
