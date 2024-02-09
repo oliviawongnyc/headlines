@@ -24,19 +24,19 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
   const playerGuessed = !!playersGuess;
 
   // Light and dark mode colors
-  const tooltipBg = useColorModeValue("gray.100", "gray.700");
-  const textColor = useColorModeValue("black", "white");
+  const answerBorder = useColorModeValue("gray.200", "whiteAlpha.300");
   const blankBorder = useColorModeValue("1px solid black", "1px solid white");
   const borderReverse = useColorModeValue(
     "1px solid white",
     "1px solid gray.800"
   );
   const boxBg = useColorModeValue("gray.100", "whiteAlpha.200");
-  const answerBorder = useColorModeValue("gray.200", "whiteAlpha.300");
+  const textColor = useColorModeValue("black", "white");
+  const tooltipBg = useColorModeValue("gray.100", "gray.700");
 
   return (
     <>
-      <Heading as="h2" fontSize="3xl">
+      <Heading as="h2" fontFamily="headline" fontSize="3xl">
         <Flex
           alignItems={playerGuessed ? "baseline" : ""}
           flexWrap="wrap"
@@ -70,7 +70,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                     placement="top"
                   >
                     <Box
-                      aria-label={playerGuessed ? playersGuess : "blank"}
+                      aria-label={playerGuessed ? playersGuess : "Blank"}
                       bg={isOver ? boxBg : undefined}
                       borderBottom={playerGuessed ? undefined : blankBorder}
                       h={playerGuessed ? "fit-content" : "40px"}
@@ -85,7 +85,8 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                         border={playerGuessed ? "1px solid" : undefined}
                         borderColor={answerBorder}
                         boxShadow={playerGuessed ? "md" : undefined}
-                        p="2"
+                        pt="2"
+                        px="2"
                         color={
                           isCorrect === true
                             ? "correct"
@@ -105,7 +106,11 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
           })}
         </Flex>
       </Heading>
-      {headline && <Text mt="2">Published {headline.publishDate}</Text>}
+      {headline && (
+        <Text fontSize="sm" mt="4">
+          Published {headline.publishDate}
+        </Text>
+      )}
     </>
   );
 };

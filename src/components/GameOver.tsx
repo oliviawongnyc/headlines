@@ -45,14 +45,13 @@ const GameOver = ({
       <>
         <Heading
           as="h2"
-          fontFamily="header"
-          fontSize="xl"
-          fontWeight="normal"
+          fontFamily="subtitleBold"
+          fontSize="2xl"
           letterSpacing={-1}
         >
           {exclamation}
         </Heading>
-        <Text fontFamily="body" mb="8">
+        <Text fontFamily="subtitle" mb="8" mx="8">
           {feedbackDetail}
         </Text>
       </>
@@ -61,19 +60,19 @@ const GameOver = ({
 
   return (
     <Flex
-      alignItems="center"
       border="1px solid lightGray"
       borderRadius="md"
       boxShadow="md"
-      flexDir="column"
-      justifyContent="center"
+      layerStyle="centeredFlexbox"
       py="16"
       textAlign="center"
     >
       {finalFeedback()}
       <Button
         borderRadius="3xl"
+        letterSpacing={-1}
         onClick={resetGame}
+        size="sm"
         variant="outline"
         _focus={{
           outline: "none",
@@ -88,7 +87,7 @@ const GameOver = ({
         decorateOptions={(options) => ({
           ...options,
           colors: ["#ffc600"],
-          gravity: 0.75,
+          gravity: 0.5,
           scalar: 0.75,
           shapes: ["star"],
         })}

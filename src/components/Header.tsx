@@ -13,16 +13,16 @@ import InstructionsModal from "./InstructionsModal";
 
 const Header = ({ headline }: { headline?: Headline }) => {
   const { toggleColorMode } = useColorMode();
+  const { isOpen, onClose, onOpen } = useDisclosure();
+
+  // Light and dark mode colors
   const colorModeIcon = useColorModeValue(
     <MoonIcon boxSize="4" />,
     <SunIcon boxSize="4" />
   );
-  const { isOpen, onClose, onOpen } = useDisclosure();
-
-  // Light and dark mode colors
-  const tooltipBg = useColorModeValue("gray.100", "gray.700");
-  const textColor = useColorModeValue("black", "white");
   const colorModeString = useColorModeValue("dark mode", "light mode");
+  const textColor = useColorModeValue("black", "white");
+  const tooltipBg = useColorModeValue("gray.100", "gray.700");
 
   return (
     <Flex flexDir="column" my="10" mx={["4", "6"]}>
@@ -37,15 +37,11 @@ const Header = ({ headline }: { headline?: Headline }) => {
             placement="top"
           >
             <Button
+              aria-label="Game instructions"
               onClick={onOpen}
-              variant="outline"
               px={0}
               size="sm"
-              _focus={{
-                outline: "none",
-                ring: "2px",
-                ringColor: "focusRingColor",
-              }}
+              variant="outline"
             >
               <QuestionOutlineIcon boxSize="4" />
             </Button>
@@ -64,11 +60,6 @@ const Header = ({ headline }: { headline?: Headline }) => {
               px={0}
               size="sm"
               variant="outline"
-              _focus={{
-                outline: "none",
-                ring: "2px",
-                ringColor: "focusRingColor",
-              }}
             >
               {colorModeIcon}
             </Button>
@@ -76,7 +67,7 @@ const Header = ({ headline }: { headline?: Headline }) => {
         </Flex>
       </Flex>
       {headline && (
-        <Text mt="2">
+        <Text fontFamily="subtitle" fontSize={["sm", "md"]}>
           Click or drag the answer to complete the famous New York Times
           headline.
         </Text>

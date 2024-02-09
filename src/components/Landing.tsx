@@ -3,23 +3,23 @@ import GameTitle from "./GameTitle";
 
 const Landing = ({ startGame }: { startGame: () => void }) => {
   return (
-    <Flex
-      alignItems="center"
-      flexDir="column"
-      bgColor="landing"
-      justifyContent="center"
-      h="100vh"
-    >
-      <Image src="Newspaper.png" mb="4" w="50px" />
+    <Flex bgColor="landing" h="100vh" layerStyle="centeredFlexbox">
+      <Image src="newspaper.png" mb="4" w="50px" />
       <GameTitle isLandingPage />
-      <Text color="black" fontSize="large" mb="4">
+      <Text
+        color="black"
+        fontFamily="subtitle"
+        fontSize="large"
+        mb="4"
+        mx="8"
+        textAlign="center"
+      >
         Complete the famous headline in history.
       </Text>
       <Button
-        borderRadius="3xl"
         bgColor="black"
         color="white"
-        mb="8"
+        mb="6"
         onClick={startGame}
         px="10"
         size="sm"
@@ -34,15 +34,10 @@ const Landing = ({ startGame }: { startGame: () => void }) => {
       >
         Play
       </Button>
-      <Text
-        color="black"
-        fontFamily="landing"
-        fontSize="medium"
-        fontWeight="bold"
-      >
+      <Text color="black" fontSize="sm" fontWeight="bold">
         {returnFormattedDate()}
       </Text>
-      <Text color="black" fontFamily="landing" fontSize="x-small">
+      <Text color="black" fontSize="xs" fontWeight="light">
         Edited by Olivia Wong
       </Text>
     </Flex>

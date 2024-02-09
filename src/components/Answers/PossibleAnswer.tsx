@@ -50,6 +50,7 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     borderColor: answerBorder,
     bgColor: activeBackground,
     boxShadow: "md",
+    fontFamily: "answers",
     p: "2",
     w: "fit-content",
     outline: "none",
@@ -66,11 +67,11 @@ const PossibleAnswer = ({ children }: { children: string }) => {
   return (
     <Box
       as="button"
-      disabled={playerGuessed ? true : undefined}
       aria-label={`Select ${children}`}
       {...(isMobile && {
         onTouchEnd: onTouchOrClick,
       })}
+      disabled={playerGuessed ? true : undefined}
       {...(isBrowser && {
         onKeyPress: handleKeyPressed,
         onMouseUp: onTouchOrClick,

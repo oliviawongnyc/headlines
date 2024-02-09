@@ -24,7 +24,6 @@ const Game = ({
   setClickedPlay: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const sensorBasedOnDevice = isMobile ? TouchSensor : PointerSensor;
-
   const sensors = useSensors(
     useSensor(MouseSensor),
     useSensor(sensorBasedOnDevice, {
@@ -55,7 +54,6 @@ const Game = ({
       setCurrentAnswerBank(headline?.answerBank || []);
       setDragFinishing(true);
     }
-
     // We keep track of a drag that is finishing for 2 milliseconds
     // to avoid conflicts with click events.
     setTimeout(() => setDragFinishing(false), 200);
@@ -97,7 +95,11 @@ const QuestionCount = ({
   const questionProgress = `${currentHeadlineIdx + 1}/${QUESTION_COUNT}`;
 
   return (
-    <Text aria-label={`Question ${questionProgress}`} fontSize={["md", "lg"]}>
+    <Text
+      aria-label={`Question ${questionProgress}`}
+      fontFamily="subtitleBold"
+      fontSize="md"
+    >
       {questionProgress}
     </Text>
   );
@@ -119,7 +121,8 @@ const Feedback = ({
     <Text
       aria-live="assertive"
       color={isCorrect ? "correct" : "incorrect"}
-      fontSize="md"
+      fontFamily="subtitle"
+      fontSize={["sm", "md"]}
     >
       {isCorrect ? "Well done!" : wrongAnswer}
     </Text>

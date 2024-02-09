@@ -5,7 +5,6 @@ import { useScore } from "../../hooks/useScore";
 
 const GameButtons = ({ headline }: { headline: Headline }) => {
   const nextRef = useRef<HTMLButtonElement | null>(null);
-
   const {
     currentHeadlineIdx,
     setCurrentHeadlineIdx,
@@ -32,17 +31,14 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
   });
 
   return (
-    <Flex mt="6" alignItems="end" justifyContent="space-between">
+    <Flex mt="6" alignItems="flex-end" justifyContent="space-between">
       <Button
         isDisabled={!playerGuessed}
+        layerStyle="focusStyles"
         onClick={nextHeadlineOrFinish}
         ref={nextRef}
-        size={["sm", "md"]}
-        _focus={{
-          outline: "none",
-          ring: "2px",
-          ringColor: "focusRingColor",
-        }}
+        size="sm"
+        textStyle="customButton"
         variant="outline"
       >
         {currentHeadlineIdx < 9 ? "Next" : "Finish"}
@@ -50,10 +46,10 @@ const GameButtons = ({ headline }: { headline: Headline }) => {
       {playerGuessed && (
         <Link
           borderRadius="md"
-          fontSize={["sm", "md"]}
-          p="1"
+          fontSize="sm"
           href={headline.articleLink}
           isExternal
+          p="1"
           _focus={{
             outline: "none",
             ring: "2px",

@@ -7,27 +7,25 @@ const GameTitle = ({ isLandingPage }: { isLandingPage?: boolean }) => {
     <Heading
       as="h1"
       color={isLandingPage ? "black" : undefined}
-      fontFamily="header"
+      fontFamily="title"
       fontSize="3xl"
       fontWeight="normal"
       letterSpacing={-1}
     >
-      <Flex alignItems="center" gap="2">
+      <Flex alignItems="baseline" gap="2">
         {!isLandingPage && (
           <>
-            {" "}
             <span
               style={{
                 fontFamily: "Chomsky",
                 fontSize: "40px",
-                fontWeight: 400,
               }}
             >
               T
             </span>
             <Box
-              w="1px"
-              h="25px"
+              w="px"
+              h="6"
               bgColor={isLandingPage ? "black" : dividerColor}
             />
           </>

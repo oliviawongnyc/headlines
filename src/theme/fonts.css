@@ -1,4 +1,24 @@
 @font-face {
   font-family: "Chomsky";
-  src: url(../../public/Chomsky.otf);
+  src: url(../../public/fonts/Chomsky.otf);
+}
+
+@font-face {
+  font-family: "ITC Clearface Regular";
+  src: url(../../public/fonts/ClearfaceStd-Regular.woff2);
+}
+
+@font-face {
+  font-family: "ITC Clearface Bold";
+  src: url(../../public/fonts/ClearfaceStd-Bold.woff2);
+}
+
+@font-face {
+  font-family: "Memphis Bold";
+  src: url(../../public/fonts/Memphis-Bold.otf);
+}
+
+@font-face {
+  font-family: "Memphis Medium";
+  src: url(../../public/fonts/Memphis-Medium.otf);
 }

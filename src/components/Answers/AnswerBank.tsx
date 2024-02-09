@@ -10,15 +10,7 @@ const AnswerBank = () => {
   const { currentAnswerBank } = useAnswerBank();
 
   return (
-    <Box
-      border="1px solid lightGray"
-      borderRadius="md"
-      boxShadow="md"
-      mb="5"
-      p={["4", "6"]}
-      w="100%"
-      ref={setAnswerBankRef}
-    >
+    <Box layerStyle="gameBox" mb="5" w="100%" ref={setAnswerBankRef}>
       <Flex flexWrap="wrap" gap="2">
         {currentAnswerBank?.map((answer) => {
           return <PossibleAnswer key={answer}>{answer}</PossibleAnswer>;

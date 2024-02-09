@@ -4,14 +4,7 @@ import HeadlineAndDate from "./HeadlineAndDate";
 
 const HeadlineCard = ({ headline }: { headline: Headline }) => {
   return (
-    <Flex
-      border="1px solid lightGray"
-      borderRadius="md"
-      boxShadow="md"
-      flexDir="column"
-      mb={["5", "7"]}
-      p={["4", "6"]}
-    >
+    <Flex flexDir="column" layerStyle="gameBox" mb={["5", "7"]}>
       <HeadlineAndDate headline={headline} />
       <GameButtons headline={headline} />
     </Flex>
