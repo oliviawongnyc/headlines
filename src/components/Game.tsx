@@ -35,7 +35,7 @@ const Game = ({
     })
   );
 
-  const { setCurrentAnswerBank } = useAnswerBank();
+  const { currentAnswerBank, setCurrentAnswerBank } = useAnswerBank();
   const { currentHeadlineIdx, setDragFinishing, headline, playersGuess } =
     useHeadline();
   const { isCorrect, submitAGuess } = useScore();
@@ -51,7 +51,7 @@ const Game = ({
       setDragFinishing(true);
       // else, add it back to the answer bank
     } else {
-      setCurrentAnswerBank(headline?.answerBank || []);
+      setCurrentAnswerBank(currentAnswerBank || []);
       setDragFinishing(true);
     }
     // We keep track of a drag that is finishing for 2 milliseconds
