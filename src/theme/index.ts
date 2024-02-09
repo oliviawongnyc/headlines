@@ -35,8 +35,8 @@ const theme = extendTheme({
       focusRingColor: "#4d88f9",
     },
     fonts: {
-      answers: `'ITC Clearface Regular', sans-serif;`,
-      headline: `'ITC Clearface Bold', sans-serif;`,
+      headline: `'ITC Clearface Regular', sans-serif;`,
+      headlineBold: `'ITC Clearface Bold', sans-serif;`,
       subtitle: `'Memphis Medium', sans-serif`,
       subtitleBold: `'Memphis Bold', sans-serif`,
       tLogo: `'Chomsky', sans-serif`,

@@ -39,7 +39,7 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
     <>
       <Heading
         as="h2"
-        fontFamily={isMobile ? "answers" : "headline"}
+        fontFamily={isMobile ? "headline" : "headlineBold"}
         fontSize="3xl"
       >
         <Flex
