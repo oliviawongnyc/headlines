@@ -1,5 +1,7 @@
 # Headlines (the Game)
 
+![Headlines logo](https://headlines-oliviawongnyc.vercel.app/headlinesLogo.png)
+
 ## About Headlines
 
 This game is a personal, hobby project and not affiliated with the New York
