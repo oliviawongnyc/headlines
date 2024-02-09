@@ -7,6 +7,7 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
+import { isMobile } from "react-device-detect";
 import { useDroppable } from "@dnd-kit/core";
 import { useAnswerBank } from "../../hooks/useAnswerBank";
 import { useScore } from "../../hooks/useScore";
@@ -36,7 +37,11 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
 
   return (
     <>
-      <Heading as="h2" fontFamily="headline" fontSize="3xl">
+      <Heading
+        as="h2"
+        fontFamily={isMobile ? "answers" : "headline"}
+        fontSize="3xl"
+      >
         <Flex
           alignItems={playerGuessed ? "baseline" : ""}
           flexWrap="wrap"

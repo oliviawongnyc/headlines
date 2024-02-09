@@ -51,7 +51,8 @@ const PossibleAnswer = ({ children }: { children: string }) => {
     bgColor: activeBackground,
     boxShadow: "md",
     fontFamily: "answers",
-    p: "2",
+    pt: "2",
+    px: "2",
     w: "fit-content",
     outline: "none",
     _disabled: {
