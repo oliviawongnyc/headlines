@@ -1,6 +1,6 @@
 # Headlines (the Game)
 
-![Headlines logo](https://headlines-oliviawongnyc.vercel.app/headlinesLogo.png)
+<img src="https://headlines-oliviawongnyc.vercel.app/headlinesLogo.png" alt="Headlines logo" width="75" height="75">
 
 ## About Headlines
 
