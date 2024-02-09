@@ -72,6 +72,7 @@ const GameOver = ({
     >
       {finalFeedback()}
       <Button
+        borderRadius="3xl"
         onClick={resetGame}
         variant="outline"
         _focus={{
