@@ -10,9 +10,9 @@ const Landing = ({ startGame }: { startGame: () => void }) => {
       justifyContent="center"
       h="100vh"
     >
-      <Image boxSize="75px" mb="4" src="headlinesPNGNoBackground.png" />
-      <GameTitle isLandingPage={true} />
-      <Text color="black" fontSize="large" mb="3">
+      <Image src="Newspaper.png" mb="4" w="50px" />
+      <GameTitle isLandingPage />
+      <Text color="black" fontSize="large" mb="4">
         Complete the famous headline in history.
       </Text>
       <Button

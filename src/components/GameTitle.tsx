@@ -13,20 +13,25 @@ const GameTitle = ({ isLandingPage }: { isLandingPage?: boolean }) => {
       letterSpacing={-1}
     >
       <Flex alignItems="center" gap="2">
-        <span
-          style={{
-            fontFamily: "Chomsky",
-            fontSize: "40px",
-            fontWeight: 400,
-          }}
-        >
-          T
-        </span>
-        <Box
-          w="1px"
-          h="25px"
-          bgColor={isLandingPage ? "black" : dividerColor}
-        />
+        {!isLandingPage && (
+          <>
+            {" "}
+            <span
+              style={{
+                fontFamily: "Chomsky",
+                fontSize: "40px",
+                fontWeight: 400,
+              }}
+            >
+              T
+            </span>
+            <Box
+              w="1px"
+              h="25px"
+              bgColor={isLandingPage ? "black" : dividerColor}
+            />
+          </>
+        )}
         Headlines
       </Flex>
     </Heading>
