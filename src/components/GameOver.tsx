@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import Realistic from "react-canvas-confetti/dist/presets/realistic";
 import { TConductorInstance } from "react-canvas-confetti/dist/types";
 import { useHeadline } from "../hooks/useHeadline";
@@ -67,6 +67,7 @@ const GameOver = ({
       py="16"
       textAlign="center"
     >
+      <Image alt="Headlines logo" src="headlinesLogo.png" mb="2" w="50px" />
       {finalFeedback()}
       <Button
         borderRadius="3xl"
