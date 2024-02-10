@@ -78,8 +78,8 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
                       aria-label={playerGuessed ? playersGuess : "Blank"}
                       bg={isOver ? boxBg : undefined}
                       borderBottom={playerGuessed ? undefined : blankBorder}
-                      h={playerGuessed ? "fit-content" : "40px"}
-                      w={playerGuessed ? "fit-content" : "150px"}
+                      h={playerGuessed ? "fit-content" : "35px"}
+                      w={playerGuessed ? "fit-content" : "100px"}
                       opacity={isOver ? "0.5" : undefined}
                       onMouseEnter={onOpen}
                       onMouseLeave={onClose}
