@@ -20,7 +20,7 @@ export default function ScoreContextProvider({
   children,
 }: ScoreContextProviderProps) {
   const { headline, setPlayersGuess } = useHeadline();
-  const { setCurrentAnswerBank } = useAnswerBank();
+  const { currentAnswerBank, setCurrentAnswerBank } = useAnswerBank();
 
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
@@ -28,7 +28,7 @@ export default function ScoreContextProvider({
   const submitAGuess = (guess: string) => {
     if (!headline) return;
     setPlayersGuess(guess);
-    const originalAnswerBank = headline.answerBank;
+    const originalAnswerBank = currentAnswerBank;
     setCurrentAnswerBank(
       originalAnswerBank.filter((possibleAnswer) => possibleAnswer !== guess)
     );

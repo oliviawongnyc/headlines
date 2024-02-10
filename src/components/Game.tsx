@@ -30,7 +30,7 @@ const Game = ({
       // This constraint gives us a way to decipher
       // between a drag and a click.
       activationConstraint: {
-        distance: 2,
+        distance: 3,
       },
     })
   );
