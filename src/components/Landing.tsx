@@ -14,7 +14,7 @@ const Landing = ({ startGame }: { startGame: () => void }) => {
         mx="8"
         textAlign="center"
       >
-        Complete the famous headline in history.
+        Complete the noteworthy headline in history.
       </Text>
       <Button
         bgColor="black"

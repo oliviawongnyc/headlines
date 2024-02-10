@@ -68,7 +68,7 @@ const Header = ({ headline }: { headline?: Headline }) => {
       </Flex>
       {headline && (
         <Text fontFamily="subtitle" fontSize={["sm", "md"]}>
-          Click or drag the answer to complete the famous New York Times
+          Click or drag the answer to complete the noteworthy New York Times
           headline.
         </Text>
       )}

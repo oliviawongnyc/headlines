@@ -30,7 +30,7 @@ const InstructionsModal = ({
         >
           Headlines
           <Text fontFamily="subtitle" fontSize="md" letterSpacing={0}>
-            Complete the famous New York Times headline.
+            Complete the noteworthy New York Times headline.
           </Text>
         </ModalHeader>
         <ModalCloseButton />
