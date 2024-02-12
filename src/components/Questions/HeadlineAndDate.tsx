@@ -47,13 +47,13 @@ const HeadlineAndDate = ({ headline }: { headline: Headline }) => {
           flexWrap="wrap"
           gap="2"
         >
-          {headline.headlineWithBlank.split(" ").map((part) => {
+          {headline.headlineWithBlank.split(" ").map((part, idx) => {
             if (part !== "_") {
               return (
                 <Box
                   borderBottom={borderReverse}
                   h="40px"
-                  key={`${headline.id}-${part}`}
+                  key={`${headline.id}-${part}-${idx}`}
                 >
                   {part}
                 </Box>

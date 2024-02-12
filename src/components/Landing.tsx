@@ -4,7 +4,12 @@ import GameTitle from "./GameTitle";
 const Landing = ({ startGame }: { startGame: () => void }) => {
   return (
     <Flex bgColor="landing" h="100vh" layerStyle="centeredFlexbox">
-      <Image alt="Headlines logo" src="headlinesLogo.png" mb="4" w="50px" />
+      <Image
+        alt="Headlines logo"
+        src="headlinesLogoCompressed.png"
+        mb="4"
+        w="50px"
+      />
       <GameTitle isLandingPage />
       <Text
         color="black"

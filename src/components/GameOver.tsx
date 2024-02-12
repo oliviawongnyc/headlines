@@ -67,7 +67,12 @@ const GameOver = ({
       py="16"
       textAlign="center"
     >
-      <Image alt="Headlines logo" src="headlinesLogo.png" mb="2" w="50px" />
+      <Image
+        alt="Headlines logo"
+        src="headlinesLogoCompressed.png"
+        mb="2"
+        w="50px"
+      />
       {finalFeedback()}
       <Button
         borderRadius="3xl"
