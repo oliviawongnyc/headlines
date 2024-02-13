@@ -58,9 +58,13 @@ const InstructionsModal = ({
               when incorrect.
             </ListItem>
           </UnorderedList>
-          <Text fontFamily="subtitle" fontSize="sm" mt="8" mb="3">
-            This game is a personal, hobby project by Olivia Wong and not
-            affiliated with the New York Times.
+          <Text fontFamily="subtitle" fontSize="xs" mt="6" mb="3">
+            This game is a personal project by Olivia Wong and not affiliated
+            with the New York Times.
+          </Text>
+          <Text fontFamily="subtitle" fontSize="xs" mt="2" mb="3">
+            Special thanks to @nytryan of @nytarchives for curating and
+            surfacing so many important moments in history.
           </Text>
         </ModalBody>
       </ModalContent>
